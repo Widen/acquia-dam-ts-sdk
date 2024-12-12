@@ -1,0 +1,159 @@
+{
+  "name": "acquia-dam-sdk",
+  "version": "1.0.0",
+  "description": "Interact with the Acquia DAM API",
+  "license": "ISC",
+  "author": "Acquia",
+  "keywords": [
+    "acquia",
+    "dam",
+    "digital asset manager",
+    "integration"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./apis": {
+      "import": "./dist/apis/index.mjs",
+      "require": "./dist/apis/index.cjs",
+      "types": "./dist/apis/index.d.ts"
+    },
+    "./client": {
+      "import": "./dist/client/index.mjs",
+      "require": "./dist/client/index.cjs",
+      "types": "./dist/client/index.d.ts"
+    },
+    "./events/assets": {
+      "types": "./dist/events/assets.d.ts"
+    },
+    "./events/workflow": {
+      "types": "./dist/events/workflow.d.ts"
+    },
+    "./requests/analytics": {
+      "types": "./dist/apis/analytics/requests.d.ts"
+    },
+    "./responses/analytics": {
+      "types": "./dist/apis/analytics/responses.d.ts"
+    },
+    "./requests/assets": {
+      "types": "./dist/apis/assets/requests.d.ts"
+    },
+    "./responses/assets": {
+      "types": "./dist/apis/assets/responses.d.ts"
+    },
+    "./requests/attributes": {
+      "types": "./dist/apis/attributes/requests.d.ts"
+    },
+    "./responses/attributes": {
+      "types": "./dist/apis/attributes/responses.d.ts"
+    },
+    "./requests/categories": {
+      "types": "./dist/apis/categories/requests.d.ts"
+    },
+    "./responses/categories": {
+      "types": "./dist/apis/categories/responses.d.ts"
+    },
+    "./requests/collections": {
+      "types": "./dist/apis/collections/requests.d.ts"
+    },
+    "./responses/collections": {
+      "types": "./dist/apis/collections/responses.d.ts"
+    },
+    "./requests/metadata": {
+      "types": "./dist/apis/metadata/requests.d.ts"
+    },
+    "./responses/metadata": {
+      "types": "./dist/apis/metadata/responses.d.ts"
+    },
+    "./requests/orders": {
+      "types": "./dist/apis/orders/requests.d.ts"
+    },
+    "./responses/orders": {
+      "types": "./dist/apis/orders/responses.d.ts"
+    },
+    "./requests/products": {
+      "types": "./dist/apis/products/requests.d.ts"
+    },
+    "./responses/products": {
+      "types": "./dist/apis/products/responses.d.ts"
+    },
+    "./requests/search-connector": {
+      "types": "./dist/apis/search-connector/requests.d.ts"
+    },
+    "./responses/search-connector": {
+      "types": "./dist/apis/search-connector/responses.d.ts"
+    },
+    "./responses/usage": {
+      "types": "./dist/apis/usage/responses.d.ts"
+    },
+    "./responses/users": {
+      "types": "./dist/apis/users/responses.d.ts"
+    },
+    "./requests/webhooks": {
+      "types": "./dist/apis/webhooks/requests.d.ts"
+    },
+    "./responses/webhooks": {
+      "types": "./dist/apis/webhooks/responses.d.ts"
+    },
+    "./requests/workflow": {
+      "types": "./dist/apis/workflow/requests.d.ts"
+    },
+    "./responses/workflow": {
+      "types": "./dist/apis/workflow/responses.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pkgroll --clean-dist",
+    "docs": "yarn typedoc",
+    "format": "prettier -w src/**/*.ts",
+    "format:check": "prettier --check src/**/*.ts",
+    "lint": "eslint --fix",
+    "lint:check": "eslint",
+    "models": "./scripts/generate-models.sh",
+    "precommit": "yarn lint && yarn format && yarn models && yarn test",
+    "test": "jest",
+    "test:ci": "jest --config=jest.config-ci.ts",
+    "test:verbose": "jest --silent=false",
+    "ts": "tsc"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "babel-jest": "^29.7.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.14.0",
+    "eslint-config-widen": "^4.0.3",
+    "eslint-plugin-jest": "^28.9.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-playwright": "^2.0.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-sort": "^4.0.0",
+    "eslint-plugin-widen": "^3.0.0",
+    "jest": "^29.7.0",
+    "pkgroll": "^2.5.1",
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "ts-to-zod": "^3.13.0",
+    "typedoc": "^0.27.0",
+    "typedoc-github-theme": "^0.2.0",
+    "typedoc-plugin-missing-exports": "^3.1.0",
+    "typedoc-plugin-rename-defaults": "^0.7.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.13.0",
+    "zod": "^3.23.8"
+  },
+  "type": "module",
+  "prettier": "./prettier.config.js",
+  "packageManager": "yarn@3.6.4"
+}
