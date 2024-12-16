@@ -1,4 +1,3 @@
-import { ApiClient } from 'client'
 import {
   AnalyticsApi,
   AssetsApi,
@@ -13,7 +12,8 @@ import {
   UsersApi,
   WebhooksApi,
   WorkflowApi,
-} from './apis'
+} from 'apis'
+import { ApiClient } from 'client'
 
 export interface AcquiaDAMParams {
   /** Acquia DAM API token or OAuth Access Token */

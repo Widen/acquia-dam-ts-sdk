@@ -8,10 +8,13 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
-    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strict": true,
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/__models__/*", "src/__tests__/*"]
 }
