@@ -17,7 +17,7 @@ import { ApiClient } from 'client'
 
 export interface AcquiaDAMParams {
   /** Acquia DAM API token or OAuth Access Token */
-  authToken: string
+  authToken?: string
   /** Optionally, provide your own implementation of the API client */
   client?: ApiClient
 }
@@ -25,19 +25,19 @@ export interface AcquiaDAMParams {
 export default class AcquiaDAM {
   private _client: ApiClient
 
-  private _analyticsApi: AnalyticsApi | null = null
-  private _assetsApi: AssetsApi | null = null
-  private _attributesApi: AttributesApi | null = null
-  private _categoriesApi: CategoriesApi | null = null
-  private _collectionsApi: CollectionsApi | null = null
-  private _metadataApi: MetadataApi | null = null
-  private _ordersApi: OrdersApi | null = null
-  private _productsApi: ProductsApi | null = null
-  private _searchConnectorApi: SearchConnectorApi | null = null
-  private _usageApi: UsageApi | null = null
-  private _usersApi: UsersApi | null = null
-  private _webhooksApi: WebhooksApi | null = null
-  private _workflowApi: WorkflowApi | null = null
+  private _analyticsApi?: AnalyticsApi
+  private _assetsApi?: AssetsApi
+  private _attributesApi?: AttributesApi
+  private _categoriesApi?: CategoriesApi
+  private _collectionsApi?: CollectionsApi
+  private _metadataApi?: MetadataApi
+  private _ordersApi?: OrdersApi
+  private _productsApi?: ProductsApi
+  private _searchConnectorApi?: SearchConnectorApi
+  private _usageApi?: UsageApi
+  private _usersApi?: UsersApi
+  private _webhooksApi?: WebhooksApi
+  private _workflowApi?: WorkflowApi
 
   /**
    * Create an instance of the Acquia DAM Module.
@@ -46,8 +46,8 @@ export default class AcquiaDAM {
    *
    * @param params Information for creating the client
    */
-  public constructor(params: AcquiaDAMParams) {
-    this._client = params.client ?? new ApiClient(params.authToken)
+  public constructor(params?: AcquiaDAMParams) {
+    this._client = params?.client ?? new ApiClient(params?.authToken)
   }
 
   /**

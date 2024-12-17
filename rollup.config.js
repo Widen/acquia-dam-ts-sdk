@@ -1,9 +1,9 @@
 import babel from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
+import { readFile } from 'fs/promises'
 import { resolve } from 'path'
 import { dts } from 'rollup-plugin-dts'
-import { readFile } from 'fs/promises'
 
 const packageInfo = JSON.parse(
   await readFile(new URL('./package.json', import.meta.url))

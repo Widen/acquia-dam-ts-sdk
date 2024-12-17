@@ -21,8 +21,10 @@ export class ApiClient {
     ['2', 'https://api.widencollective.com/v2/'],
   ])
 
-  public constructor(authToken: string) {
-    this.authToken = authToken
+  public constructor(authToken?: string) {
+    if (authToken) {
+      this.authToken = authToken
+    }
   }
 
   /**
@@ -99,7 +101,12 @@ export class ApiClient {
    * @returns The necessary headers including authentication
    */
   protected buildHeaders(requestParams: ApiRequestParams) {
+    if (!this._authToken) {
+      throw new AcquiaDAMError('SDK Error', undefined, 'Auth token is not set')
+    }
+
     const headers = new Headers()
+
     headers.set('Authorization', `Bearer ${this._authToken}`)
     headers.set('x-acquia-sdk-client', this.__sdkIdentifier)
 
