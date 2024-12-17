@@ -1,7 +1,13 @@
 import babel from '@rollup/plugin-babel'
+import replace from '@rollup/plugin-replace'
 import typescript from '@rollup/plugin-typescript'
 import { resolve } from 'path'
 import { dts } from 'rollup-plugin-dts'
+import { readFile } from 'fs/promises'
+
+const packageInfo = JSON.parse(
+  await readFile(new URL('./package.json', import.meta.url))
+)
 
 const transpilePlugins = [
   babel({
@@ -10,6 +16,12 @@ const transpilePlugins = [
     babelHelpers: 'bundled',
   }),
   typescript({ tsconfig: './tsconfig.build.json' }),
+  replace({
+    values: {
+      'dam-ts@development': `dam-ts@${packageInfo.version}`,
+    },
+    preventAssignment: true,
+  }),
 ]
 
 const typePlugins = [dts({ compilerOptions: { baseUrl: 'dist' } })]

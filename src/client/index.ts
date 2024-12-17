@@ -14,6 +14,7 @@ import type { ApiRequestParams, ApiVersions, Json, JsonWithDate } from './types'
  */
 export class ApiClient {
   private _authToken: string = ''
+  public readonly __sdkIdentifier = 'dam-ts@development'
 
   public baseUrlMap: Map<ApiVersions, string> = new Map([
     ['1', 'https://.widencollective.com/api/rest/'],
@@ -100,6 +101,7 @@ export class ApiClient {
   protected buildHeaders(requestParams: ApiRequestParams) {
     const headers = new Headers()
     headers.set('Authorization', `Bearer ${this._authToken}`)
+    headers.set('x-acquia-sdk-client', this.__sdkIdentifier)
 
     if (requestParams.body && !(requestParams.body instanceof FormData)) {
       headers.set('Content-Type', 'application/json')
