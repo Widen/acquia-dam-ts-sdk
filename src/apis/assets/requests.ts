@@ -85,9 +85,17 @@ export interface BasicSearchParams {
   expand?: AssetSearchExpand[]
   /** List of data items to facet on the result set. For more details on faceting, see this [Acquia Developer Portal post](https://dev.acquia.com/blog/new-faceted-asset-search) */
   facet?: AssetSearchFacet[]
-  /** If true, archived assets will be returned in the results, if the user associated with the access token has permission to view archived assets. Default value is `false` */
+  /**
+   * If true, archived assets will be returned in the results, if the user associated with the access token has permission to view archived assets.
+   *
+   * @default false
+   */
   include_archived?: boolean
-  /** If true, deleted assets will be returned in the results, if the user associated with the access token has permission to view deleted assets. Default value is `false` */
+  /**
+   * If true, deleted assets will be returned in the results, if the user associated with the access token has permission to view deleted assets.
+   *
+   * @default false
+   */
   include_deleted?: boolean
   /**
    * Numeric limit of the total number of results to retrieve
@@ -111,11 +119,23 @@ export interface BasicSearchParams {
   offset?: number
   /** DAM quicksearch query. Uses the same quick search syntax used within the Acquia DAM web UI. For more information on the format of a query string, see [Quick Search Help](https://community.acquia.com/acquiadam/s/article/How-do-I-search-for-assets) */
   query?: string
-  /** If true, a scroll_id is included with the results to allow scrolling through large result sets. Default value is `false` */
+  /**
+   * If true, a scroll_id is included with the results to allow scrolling through large result sets.
+   *
+   * @default false
+   */
   scroll?: boolean
-  /** If true, will include searching of document text in your search results. Default value is `false` */
+  /**
+   * If true, will include searching of document text in your search results.
+   *
+   * @default false
+   */
   search_document_text?: boolean
-  /** This field orders the search result set. The value can be prefixed with a negative sign (-) to sort in descending order. Default is `-created_date` (newest assets first) */
+  /**
+   * This field orders the search result set. The value can be prefixed with a negative sign (-) to sort in descending order.
+   *
+   * @default "-created_date" (newest assets first)
+   */
   sort?: string
 }
 
@@ -150,7 +170,7 @@ export type UpdateSecurityParams = IdentifyAsset & {
   asset_groups?: string[]
   /** The date and time the asset expires */
   expiration_date?: Date | null
-  /** List of properties to update. IMPORTANT: When using `all` properties not sent in the request will be defaulted to `null` */
+  /** List of properties to update. IMPORTANT: When using `all` properties not sent in the request will be set to `null` */
   patch?: SecurityPatchValues[]
   /** The date and time the asset is released */
   release_date?: Date | null

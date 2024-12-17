@@ -44,7 +44,7 @@ export interface CreateProjectParams {
   end_date: Date
   /** Project name */
   name: string
-  /** Owner email. Defaults to the calling user if not provided */
+  /** Owner email. Uses the calling user's email if not provided */
   owner?: string
   /** Project manager email */
   project_manager: string

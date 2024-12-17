@@ -3,7 +3,11 @@ export interface CreateOrderParams {
   assets: string[]
   /** Array of conversion UUIDs to perform on the assets for the order */
   conversions: string[]
-  /** Kick off the creation of a zip archive for the order created for the first (or only) recipient listed. Does not create zip archives for any recipient other than the first listed. Defaults to `false` */
+  /**
+   * Kick off the creation of a zip archive for the order created for the first (or only) recipient listed. Does not create zip archives for any recipient other than the first listed.
+   *
+   * @default false
+   */
   createArchive?: boolean
   /** If metadata is required for the specified order profile, it should be included here */
   metadata?: {
@@ -21,7 +25,7 @@ export interface CreateOrderParams {
   profile: string
   /** Array of the current user's saved contact UUIDs who should receive the order */
   recipients: string[]
-  /** Subject to use in the order email, a default is use if left blank */
+  /** Subject to use in the order email, a default is used if left blank */
   subject?: string
 }
 

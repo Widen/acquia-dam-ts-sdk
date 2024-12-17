@@ -10,7 +10,11 @@ export interface AddRemoveAssetsParams {
 export interface CreateCategoryParams {
   /** Description */
   description?: string
-  /** `true` to reorganize the categories at this level alphabetically after category creation or edit. Defaults to `false` */
+  /**
+   * `true` to reorganize the categories at this level alphabetically after category creation or edit.
+   *
+   * @default false
+   */
   displayAlphabetically?: boolean
   /** To display the new category before another category, provide its UUID here */
   displayBeforeCategory?: string

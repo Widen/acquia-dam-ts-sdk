@@ -105,7 +105,7 @@ export interface ListProductTypesParams {
 export interface SearchProductsParams {
   /** If included, result set will be expanded with additional data */
   expand?: ProductSearchExpand[]
-  /** Defaults to empty. Filters are AND-ed together. To mimic Entries channel export use the `exclude_variants` filter. To mimic Entries product search page use the `exclude_variant` and `search_parents_via_variants` filters. */
+  /** Filters are AND-ed together. To mimic Entries channel export use the `exclude_variants` filter. To mimic Entries product search page use the `exclude_variant` and `search_parents_via_variants` filters. */
   filters?: ProductSearchFilter[]
   /**
    * Numeric limit of the total number of results to retrieve
@@ -140,7 +140,11 @@ export interface ProductSort {
    * @default descending
    */
   order: ProductSearchSortOrder
-  /** Defaults to `last_updated` */
+  /**
+   * The type of sort to perform
+   *
+   * @default "last_updated"
+   */
   type: ProductSearchSortType
 }
 
