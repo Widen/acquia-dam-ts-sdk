@@ -69,16 +69,13 @@ export class ApiClient {
     const response = await fetch(url, opts)
 
     if (!response.ok) {
-      const body = await response.json()
-      throw new AcquiaDAMError('HTTP Error', response.status, body)
+      const content = await this.parseBody<string | object | undefined>(
+        response
+      )
+      throw new AcquiaDAMError('HTTP Error', response.status, content)
     }
 
-    if (response.body) {
-      const body = await response.json()
-      return this.parseBodyValues(body) as T
-    }
-
-    return undefined as T
+    return this.parseBody(response)
   }
 
   /**
@@ -138,6 +135,24 @@ export class ApiClient {
   }
 
   /**
+   * Parse the HTTP Response body
+   * @param response The fetch API HTTP Response
+   * @returns The body content
+   */
+  protected async parseBody<T>(response: Response): Promise<T> {
+    if (!response.body) {
+      return undefined as T
+    }
+
+    if (response.headers.get('content-type')?.includes('application/json')) {
+      const bodyContent = (await response.json()) as Json
+      return this.parseBodyValues(bodyContent) as T
+    }
+
+    return response.text() as T
+  }
+
+  /**
    * Transforms all timestamps into date objects
    * @param value The value to transform
    */
@@ -167,11 +182,27 @@ export class ApiClient {
 export class AcquiaDAMError extends Error {
   public statusCode?: number
   public body?: unknown
+  public type: ErrorTypes
 
-  constructor(message: string, statusCode?: number, body?: unknown) {
+  constructor(type: ErrorTypes, statusCode?: number, body?: object | string) {
+    const message = Object.entries({
+      type,
+      statusCode,
+      body,
+    })
+      .map(([k, v]) => {
+        if (v === undefined) {
+          return `${k}: N/A`
+        }
+        return `${k}: ${JSON.stringify(v)}`
+      })
+      .join('\n')
     super(message)
 
+    this.type = type
     this.statusCode = statusCode
     this.body = body
   }
 }
+
+type ErrorTypes = 'SDK Error' | 'HTTP Error'

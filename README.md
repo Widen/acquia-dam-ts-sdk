@@ -5,7 +5,15 @@
 ## Installation
 Install the package from NPM using your package manager:
 
-`npm install acquia-dam-sdk`
+### NPM
+```bash
+npm install acquia-dam-sdk
+```
+
+### Yarn
+```bash
+yarn add acquia-dam-sdk
+```
 
 ## Quick Start Guide
 After installing, use the following code to get started
@@ -78,9 +86,10 @@ import type { ProjectCreated } from 'acquia-dam-sdk/events/workflow'
 
 ## Error Handling
 All errors from the package are thrown in AcquiaDAMError class, which includes 3 fields:
-- `message`: Either 'HTTP Error' when the API returns a 4xx or 5xx status code, or 'SDK Error' when there is some other error with the input
-- `statusCode`: If the message is 'HTTP Error', this is the numerical error code returned by the API. Otherwise it is undefined.
-- `body`: If the message is 'HTTP Error', it is the JSON body returned by the API with debugging parameters. Otherwise, it is a string describing the error.
+- `message`: A string containing all the information in the below fields
+- `type`: Either 'HTTP Error' when the API returns a 4xx or 5xx status code, or 'SDK Error' when there is some other error with the input
+- `statusCode`: If the `type` is 'HTTP Error', this is the numerical error code returned by the API. Otherwise it is undefined.
+- `body`: If the `type` is 'HTTP Error', it is the body returned by the API. Otherwise, it is a string describing the error.
 
 ## Request Client
 The package includes a fetch-based client to handle communication between the client and the server. This client does not include any automatic retry logic or handling of OAuth token exchanges. The base client may be extended with your own implementation. Then, you may pass an instance of your own client implementation to the AcquiaDAM constructor:
