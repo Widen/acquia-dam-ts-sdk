@@ -1,14 +1,23 @@
 /** @type {Partial<import("typedoc").TypeDocOptions>} */
-const options = {
+const config = {
   entryPoints: ['./src/index.ts'],
-  out: 'doc',
   plugin: [
-    'typedoc-github-theme',
     'typedoc-plugin-rename-defaults',
     'typedoc-plugin-missing-exports',
+    'typedoc-plugin-markdown',
   ],
   internalModule: 'Components',
   collapseInternalModule: true,
+  outputs: [
+    {
+      name: 'json',
+      path: './doc/json/doc.json',
+    },
+    {
+      name: 'markdown',
+      path: './doc/markdown',
+    },
+  ],
 }
 
-export default options
+export default config
