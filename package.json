@@ -7,9 +7,11 @@
   "repository": "github:Widen/acquia-dam-api-sdk",
   "keywords": [
     "acquia",
+    "api",
     "dam",
-    "digital asset manager",
+    "digital asset management",
     "integration",
+    "sdk",
     "widen"
   ],
   "exports": {
@@ -51,7 +53,7 @@
     "lint": "eslint --fix",
     "lint:check": "eslint",
     "models": "./scripts/generate-models.sh",
-    "precommit": "yarn models && (yarn ts & yarn lint & yarn format) && yarn test",
+    "precommit": "yarn models & yarn ts & yarn lint & yarn format",
     "test": "jest",
     "test:ci": "jest --config=jest.config-ci.ts",
     "test:verbose": "jest --silent=false",

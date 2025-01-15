@@ -49,7 +49,7 @@ export class CollectionsApi {
   }
 
   /**
-   * Create a local collection
+   * Create a local (private) collection
    * @param params Information about the request
    * @returns Promise containing information about the created collection
    * @see {@link https://widenv1.docs.apiary.io/#reference/collections/collection-assets/create-a-collection}

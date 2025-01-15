@@ -118,11 +118,7 @@ export class CategoriesApi {
     let path = 'categories'
 
     if (categoryPath) {
-      const encodedCategories = categoryPath
-        .split(/(?<!\\)\//)
-        .map((part) => encodeURIComponent(part))
-        .join('/')
-      path += `/${encodedCategories}`
+      path += `/${this.encodeCategoryPath(categoryPath)}`
     }
 
     return this._client.sendRequest({
@@ -130,5 +126,16 @@ export class CategoriesApi {
       method: 'GET',
       path,
     })
+  }
+
+  /**
+   * URL-encodes symbols in the path. Escaped slashes are treated as part of the category's name.
+   * @param path The category path
+   */
+  public encodeCategoryPath(path: string) {
+    return path
+      .split(/(?<!\\)\//)
+      .map((part) => encodeURIComponent(part))
+      .join('/')
   }
 }

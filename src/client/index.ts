@@ -1,4 +1,10 @@
-import type { ApiRequestParams, ApiVersions, Json, JsonWithDate } from './types'
+import type {
+  ApiRequestParams,
+  ApiVersions,
+  ErrorTypes,
+  Json,
+  JsonWithDate,
+} from './types'
 
 /*
  * Acquia DAM
@@ -213,5 +219,3 @@ export class AcquiaDAMError extends Error {
     this.body = body
   }
 }
-
-type ErrorTypes = 'SDK Error' | 'HTTP Error'

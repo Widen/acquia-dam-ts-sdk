@@ -9,7 +9,7 @@ const config: Config = {
   roots: ['src'],
   modulePaths: ['src'],
   setupFiles: ['dotenv/config'],
-  testTimeout: 30000,
+  testTimeout: 30_000,
   silent: true,
 }
 

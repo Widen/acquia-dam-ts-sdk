@@ -28,7 +28,7 @@ export class OrdersApi {
   }
 
   /**
-   * This can be called before attempting to create an order to determine which items will be removed from the order. Situations include an asset that has been deleted or an asset the user does not have permission to order.Any items returned in the removedItems list, will be removed automatically when the order is submitted.
+   * This can be called before attempting to create an order to determine which items will be removed from the order. Situations include an asset that has been deleted or an asset the user does not have permission to order. Any items returned in the removedItems list, will be removed automatically when the order is submitted.
    * @param assets Array of asset UUIDs
    * @returns Promise containing the assets that will not be ordered
    * @see {@link https://widenv1.docs.apiary.io/#reference/orders/create-order/clean-assets-for-order}

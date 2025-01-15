@@ -14,6 +14,8 @@ export interface ApiRequestParams {
 
 export type ApiVersions = '1' | '2'
 
+export type ErrorTypes = 'SDK Error' | 'HTTP Error'
+
 export type JsonPrimitive = string | number | boolean | null
 export type JsonPrimitiveWithDate = Date | string | number | boolean | null
 

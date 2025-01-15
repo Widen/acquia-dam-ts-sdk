@@ -105,4 +105,20 @@ describe('Assets Categories: ', () => {
       })
     ).resolves.not.toThrow()
   })
+
+  it('Correctly encodes a category path without escaped slashes', () => {
+    const path = 'parent/child1/child2'
+
+    const encodedPath = client.encodeCategoryPath(path)
+
+    expect(encodedPath).toEqual('parent/child1/child2')
+  })
+
+  it('Correctly encodes a category path with escaped slashes', () => {
+    const path = 'parent/my\\/child\\/path/child2'
+
+    const encodedPath = client.encodeCategoryPath(path)
+
+    expect(encodedPath).toEqual('parent/my%5C%2Fchild%5C%2Fpath/child2')
+  })
 })

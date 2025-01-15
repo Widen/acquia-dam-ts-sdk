@@ -202,7 +202,7 @@ export class AssetsApi {
       throw new AcquiaDAMError(
         'SDK Error',
         undefined,
-        'ID Field is not defined. Must be one of id, external_id, filename'
+        'One of id, external_id, filename must be defined'
       )
     }
 
@@ -514,7 +514,7 @@ export class AssetsApi {
   /**
    * Update an asset's `metadata` fields
    * @param params Information about the request
-   * @returns Promise containing
+   * @returns Promise containing no information
    * @see {@link https://widenv2.docs.apiary.io/#reference/assets/asset-metadata/update-metadata}
    */
   public async updateMetadata(params: UpdateMetadataParams): Promise<void> {
@@ -537,7 +537,7 @@ export class AssetsApi {
   /**
    * Change an asset's metadata type
    * @param params Information about the request
-   * @returns a Promise containing no information
+   * @returns Promise containing no information
    * @see {@link https://widenv1.docs.apiary.io/#reference/assets/metadata-type/update-metadata-type}
    */
   public async updateMetadataType(

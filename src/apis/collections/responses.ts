@@ -6,7 +6,7 @@ export interface CreateCollectionResult {
   description: string
   name: string
   numResults: number
-  type: CollectionType
+  type: 'local'
   uuid: string
 }
 
@@ -19,7 +19,7 @@ export interface ListCollectionsResult {
     id: string
     title: string
     total_items: number
-    type: string
+    type: CollectionType
   }[]
   limit: number
   offset: number

@@ -10,12 +10,8 @@ const config = {
   collapseInternalModule: true,
   outputs: [
     {
-      name: 'json',
-      path: './doc/json/doc.json',
-    },
-    {
       name: 'markdown',
-      path: './doc/markdown',
+      path: './doc',
     },
   ],
 }

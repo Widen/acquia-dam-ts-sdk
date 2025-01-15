@@ -7,7 +7,7 @@ const config: Config = {
   moduleDirectories: ['node_modules'],
   roots: ['src'],
   modulePaths: ['src'],
-  testTimeout: 30000,
+  testTimeout: 30_000,
   silent: true,
 }
 

@@ -18,5 +18,12 @@ export interface Attribute {
   attribute_id: string
   import_only: boolean
   name: string
-  type: string
+  type: AttributeType
 }
+
+export type AttributeType =
+  | 'asset'
+  | 'multi_controlled_vocab'
+  | 'rich_text'
+  | 'single_controlled_vocab'
+  | 'text'

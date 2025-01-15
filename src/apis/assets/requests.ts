@@ -166,7 +166,7 @@ export type RegisterIntegrationLinkParams = IdentifyAsset & {
 }
 
 export type UpdateSecurityParams = IdentifyAsset & {
-  /** Updates to Asset Groups require at least one value */
+  /** List of asset group names. Updates to Asset Groups require at least one value */
   asset_groups?: string[]
   /** The date and time the asset expires */
   expiration_date?: Date | null
