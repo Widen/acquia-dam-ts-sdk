@@ -38,7 +38,7 @@ describe('Workflow Projects: ', () => {
 
     const result = await client.createProject({
       description: 'sdk-test',
-      name: `sdk-test-${new Date()}`,
+      name: `sdk-test-${new Date().toISOString()}`,
       project_manager: testUser,
       start_date: startDate,
       end_date: endDate,

@@ -35,7 +35,7 @@ describe('Assets: ', () => {
   const testFileUrl =
     'https://connell.widen.net/content/xnego8jxfk/jpeg/test_from_node.jpeg'
   const testAssetMetadataUuid = '2eedfe73-cc6a-437a-9968-e35386c12e11'
-  let testFilename = `sdk-test-${new Date()}`
+  let testFilename = `sdk-test-${new Date().toISOString()}`
   let testVersionId: string
   let testModifyAssetId: string
   let testAssetExtId: string
@@ -246,7 +246,10 @@ describe('Assets: ', () => {
   })
 
   it('Renames an asset', async () => {
-    testFilename = `sdk-test-rename-${new Date()}`.replaceAll(':', '')
+    testFilename = `sdk-test-rename-${new Date().toISOString()}`.replaceAll(
+      ':',
+      ''
+    )
 
     await expect(
       client.renameAsset({

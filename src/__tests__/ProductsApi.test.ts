@@ -29,8 +29,8 @@ describe('Products: ', () => {
 
   it('Creates a product', async () => {
     const result = await client.createProduct({
-      name: `sdk-test-${new Date()}`,
-      sku: `test${new Date()}`,
+      name: `sdk-test-${new Date().toISOString()}`,
+      sku: `test${new Date().toISOString()}`,
     })
 
     testProductId = result.product_id

@@ -71,7 +71,7 @@ describe('Assets Metadata: ', () => {
   })
 
   it('Adds a vocabulary value', async () => {
-    testFieldValue = `sdk-test-add-${new Date()}`
+    testFieldValue = `sdk-test-add-${new Date().toISOString()}`
 
     await expect(
       client.addValue({
@@ -91,7 +91,7 @@ describe('Assets Metadata: ', () => {
   })
 
   it('Updates a vocabulary value', async () => {
-    const newTestFieldValue = `sdk-test-update-${new Date()}`
+    const newTestFieldValue = `sdk-test-update-${new Date().toISOString()}`
 
     await expect(
       client.updateValue({
