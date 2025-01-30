@@ -1,4 +1,6 @@
-import { base, jest, typescript } from 'eslint-config-widen'
+import base from 'eslint-config-widen-base'
+import jest from 'eslint-config-widen-jest'
+import typescript from 'eslint-config-widen-typescript'
 
 const config = [
   ...base,
