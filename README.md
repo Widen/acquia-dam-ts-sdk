@@ -127,6 +127,7 @@ const response = client.sendRequest({
 ```
 
 ## Additional Resources
+- [Full SDK Documentation](https://docs.acquia.com/acquia-dam/developer/typescript-sdk)
 - [V2 API Reference](https://widenv2.docs.apiary.io/)
 - [V1 API Reference](https://widenv1.docs.apiary.io/)
 - [API FAQ](https://community.acquia.com/acquiadam/s/article/API-FAQs)

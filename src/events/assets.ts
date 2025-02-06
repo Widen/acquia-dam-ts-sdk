@@ -20,7 +20,7 @@ export interface AssetDeletedEvent extends BaseAssetEvent {
   event_type: 'asset_deleted'
 }
 
-export interface AssetReleasestringUpdatedEvent extends BaseAssetEvent {
+export interface AssetReleaseDateUpdatedEvent extends BaseAssetEvent {
   change: {
     new_value: string
     old_value: string
@@ -28,7 +28,7 @@ export interface AssetReleasestringUpdatedEvent extends BaseAssetEvent {
   event_type: 'asset_release_date_updated'
 }
 
-export interface AssetExpirationstringUpdatedEvent extends BaseAssetEvent {
+export interface AssetExpirationDateUpdatedEvent extends BaseAssetEvent {
   change: {
     new_value: string
     old_value: string
