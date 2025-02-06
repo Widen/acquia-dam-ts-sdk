@@ -1,0 +1,53 @@
+name: Build
+on: [push]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: yarn
+      - run: yarn install --immutable
+      - run: yarn lint:check
+      - run: yarn format:check
+      - run: yarn tsc
+  test:
+    runs-on: ubuntu-latest
+    env:
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+    strategy:
+      matrix:
+        node-version: [18.x, 22.x]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+      - run: yarn install --immutable
+      - run: yarn test:ci
+  release:
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: yarn
+      - run: yarn install --immutable
+      - name: Create release pull request or publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: ./scripts/release.sh
+          version: ./scripts/version.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
