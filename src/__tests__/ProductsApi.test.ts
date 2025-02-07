@@ -20,7 +20,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ authToken: process.env.API_TOKEN }).products
+  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).products
 })
 
 describe('Products: ', () => {

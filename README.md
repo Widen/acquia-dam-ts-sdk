@@ -21,7 +21,7 @@ After installing, use the following code to get started
 import AcquiaDAM from 'acquia-dam-sdk'
 
 // Create an instance of the Acquia DAM Class
-const dam = new AcquiaDAM({ authToken: 'YOUR AUTH TOKEN' })
+const dam = new AcquiaDAM({ accessToken: 'YOUR ACCESS TOKEN' })
 
 // Start performing actions. For example, search for images
 const searchResult = await dam.assets.searchAssets({ query: 'FileType: image' })
@@ -52,7 +52,7 @@ import AcquiaDAM from 'acquia-dam-sdk'
 // CommonJS Syntax
 const AcquiaDAM = require('acquia-dam-sdk').default
 
-const dam = new AcquiaDAM({ authToken: 'YOUR AUTH TOKEN'})
+const dam = new AcquiaDAM({ accessToken: 'YOUR ACCESS TOKEN'})
 ```
 
 To obtain references to multiple components, use the destructuring syntax:
@@ -105,7 +105,7 @@ const myClient = new MyClient()
 
 // Create an instance of the AcquiaDAM class that uses the new client implementation
 const dam = new AcquiaDAM({
-  authToken: 'AUTH TOKEN HERE', 
+  accessToken: 'ACCESS TOKEN HERE', 
   client: myClient
 })
 ```
@@ -115,7 +115,7 @@ The client may be used directly to make a custom API call:
 ```js
 import AcquiaDAM from 'acquia-dam-sdk'
 
-const client = new AcquiaDAM({ authToken: 'AUTH TOKEN HERE' }).client
+const client = new AcquiaDAM({ accessToken: 'ACCESS TOKEN HERE' }).client
 
 const response = client.sendRequest({
   method: 'GET', // HTTP Method

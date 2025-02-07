@@ -4,7 +4,7 @@
   "description": "Interact with the Acquia DAM API",
   "license": "ISC",
   "author": "Acquia",
-  "repository": "github:Widen/acquia-dam-api-sdk",
+  "repository": "github:Widen/acquia-dam-ts-sdk",
   "keywords": [
     "acquia",
     "api",
@@ -30,6 +30,9 @@
       "require": "./dist/client/index.cjs",
       "types": "./dist/client/index.d.ts"
     },
+    "./client/types": {
+      "types": "./dist/client/types.d.ts"
+    },
     "./events/*": {
       "types": "./dist/events/*.d.ts"
     },
@@ -54,6 +57,7 @@
     "lint:check": "eslint",
     "models": "./scripts/generate-models.sh",
     "precommit": "yarn models & yarn ts & yarn lint & yarn format",
+    "prepack": "yarn clean && yarn build:code",
     "test": "jest",
     "test:ci": "jest --config=jest.config-ci.ts",
     "test:verbose": "jest --silent=false",

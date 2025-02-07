@@ -12,7 +12,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ authToken: process.env.API_TOKEN }).searchConnector
+  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).searchConnector
 })
 
 describe('Get Search Connector Url: ', () => {
