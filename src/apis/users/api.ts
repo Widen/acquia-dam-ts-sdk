@@ -17,7 +17,7 @@ export class UsersApi {
 
   /**
    * Returns information about a user
-   * @param id Retrieve a specific user's information. If omitted, information for the user associated with the provided authentication will be returned.
+   * @param id Retrieve a specific user's information. If omitted, information for the user associated with the provided access token will be returned.
    * @returns Promise containing the requested user information
    * @see {@link https://widenv2.docs.apiary.io/#reference/users/get-user-by-id/get-user-by-id}
    */

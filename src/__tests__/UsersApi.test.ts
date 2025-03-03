@@ -15,13 +15,13 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ authToken: process.env.API_TOKEN }).users
+  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).users
 })
 
 describe('Users: ', () => {
   const testUserId = 'f0fbf84f-eaca-4806-a14d-fac5f55ef038'
 
-  it('Retrieves user data for the associated authentication token', async () => {
+  it('Retrieves user data for the associated access token', async () => {
     const result = await client.getUser()
 
     expect(() => getUserResultSchema.strict().parse(result)).not.toThrow()
@@ -33,7 +33,7 @@ describe('Users: ', () => {
     expect(() => getUserResultSchema.strict().parse(result)).not.toThrow()
   })
 
-  it('Retrieves contatct data for the associated authentication token', async () => {
+  it('Retrieves contatct data for the associated access token', async () => {
     const result = await client.getContact()
 
     expect(() => getContactResultSchema.strict().parse(result)).not.toThrow()

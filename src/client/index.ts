@@ -19,7 +19,7 @@ import type {
  * @class
  */
 export class ApiClient {
-  private _authToken: string = ''
+  private _accessToken: string = ''
   public readonly __sdkIdentifier = 'dam-ts@development'
 
   public baseUrlMap: Map<ApiVersions, string> = new Map([
@@ -27,9 +27,9 @@ export class ApiClient {
     ['2', 'https://api.widencollective.com/v2/'],
   ])
 
-  public constructor(authToken?: string) {
-    if (authToken) {
-      this.authToken = authToken
+  public constructor(accessToken?: string) {
+    if (accessToken) {
+      this.accessToken = accessToken
     }
   }
 
@@ -42,10 +42,10 @@ export class ApiClient {
   }
 
   /**
-   * Sets the current authorization token.
-   * @param token The API token obtained by the DAM Admin UI or the Access Token obtained from the OAuth Authorization Code Flow.
+   * Sets the current access token.
+   * @param token The Personal Access Token obtained from the DAM Admin UI or the Access Token obtained from the OAuth Authorization Code Flow.
    */
-  public set authToken(token: string) {
+  public set accessToken(token: string) {
     if (token === '') {
       this._collectiveKey = ''
     } else if (/^wat_[a-z]*_/.test(token)) {
@@ -53,10 +53,10 @@ export class ApiClient {
     } else if (/^[a-z]*\//.test(token)) {
       this._collectiveKey = token.split('/')[0] || ''
     } else {
-      throw new AcquiaDAMError('SDK Error', undefined, 'Malformed Auth Token')
+      throw new AcquiaDAMError('SDK Error', undefined, 'Malformed Access Token')
     }
 
-    this._authToken = token
+    this._accessToken = token
   }
 
   /**
@@ -107,13 +107,17 @@ export class ApiClient {
    * @returns The necessary headers including authentication
    */
   protected buildHeaders(requestParams: ApiRequestParams) {
-    if (!this._authToken) {
-      throw new AcquiaDAMError('SDK Error', undefined, 'Auth token is not set')
+    if (!this._accessToken) {
+      throw new AcquiaDAMError(
+        'SDK Error',
+        undefined,
+        'Access token is not set'
+      )
     }
 
     const headers = new Headers()
 
-    headers.set('Authorization', `Bearer ${this._authToken}`)
+    headers.set('Authorization', `Bearer ${this._accessToken}`)
     headers.set('x-acquia-sdk-client', this.__sdkIdentifier)
 
     if (requestParams.body && !(requestParams.body instanceof FormData)) {

@@ -16,8 +16,8 @@ import {
 import { ApiClient } from 'client'
 
 export interface AcquiaDAMParams {
-  /** Acquia DAM API token or OAuth Access Token */
-  authToken?: string
+  /** Acquia DAM Personal Access Token or OAuth Access Token */
+  accessToken?: string
   /** Optionally, provide your own implementation of the API client */
   client?: ApiClient
 }
@@ -47,7 +47,7 @@ export default class AcquiaDAM {
    * @param params Information for creating the client
    */
   public constructor(params?: AcquiaDAMParams) {
-    this._client = params?.client ?? new ApiClient(params?.authToken)
+    this._client = params?.client ?? new ApiClient(params?.accessToken)
   }
 
   /**
@@ -190,9 +190,9 @@ export default class AcquiaDAM {
   }
 
   /**
-   * Set the client's auth token.
+   * Set the client's access token.
    */
-  public set authToken(token: string) {
-    this._client.authToken = token
+  public set accessToken(token: string) {
+    this._client.accessToken = token
   }
 }

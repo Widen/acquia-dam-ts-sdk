@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
