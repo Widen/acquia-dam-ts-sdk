@@ -22,10 +22,11 @@ export interface GetAssetResult {
   created_date: Date
   current_version: boolean
   deleted_date: Date | null
-  embeds: null
+  embeds: EmbedsExpand | null
   expanded: {
     asset_properties: boolean
     download_link?: boolean
+    embeds: boolean
     file_properties: boolean
     metadata: boolean
     metadata_info: boolean
@@ -177,6 +178,11 @@ export interface AssetPropertiesExpand {
   favorite: boolean
   popularity: number
 }
+
+export type EmbedsExpand = Record<
+  string,
+  { apps: string[]; html: string; share: string; url: string }
+>
 
 export interface FilePropertiesExpand {
   format: string
