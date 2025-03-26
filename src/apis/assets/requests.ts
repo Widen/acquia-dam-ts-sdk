@@ -194,6 +194,7 @@ export type SearchAssetsParams = BasicSearchParams | ScrollSearchParams
 
 export type AssetSearchExpand =
   | 'asset_properties'
+  | 'embeds'
   | 'file_properties'
   | 'metadata'
   | 'metadata_info'
