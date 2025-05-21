@@ -42,6 +42,32 @@ export const listChannelsResultSchema = z.object({
   total_count: z.number(),
 })
 
+export const listProductCategoriesResultSchema = z.object({
+  item_type: z.string(),
+  items: z.array(
+    z.object({
+      name: z.string(),
+      product_category_id: z.string(),
+    })
+  ),
+  limit: z.number(),
+  offset: z.number(),
+  total_count: z.number(),
+})
+
+export const listProductTypesResultSchema = z.object({
+  item_type: z.string(),
+  items: z.array(
+    z.object({
+      name: z.string(),
+      product_type_id: z.string(),
+    })
+  ),
+  limit: z.number(),
+  offset: z.number(),
+  total_count: z.number(),
+})
+
 export const getProductResultSchema = z.object({
   attributes: z.record(attributeSchema).nullable(),
   created_date: z.date(),
@@ -71,32 +97,6 @@ export const getProductResultSchema = z.object({
   sku: z.string(),
 })
 
-export const listProductCategoriesResultSchema = z.object({
-  item_type: z.string(),
-  items: z.array(
-    z.object({
-      name: z.string(),
-      product_category_id: z.string(),
-    })
-  ),
-  limit: z.number(),
-  offset: z.number(),
-  total_count: z.number(),
-})
-
-export const listProductTypesResultSchema = z.object({
-  item_type: z.string(),
-  items: z.array(
-    z.object({
-      name: z.string(),
-      product_type_id: z.string(),
-    })
-  ),
-  limit: z.number(),
-  offset: z.number(),
-  total_count: z.number(),
-})
-
 export const productSchema = getProductResultSchema
 
 const productSearchFilterSchema = z.any()
@@ -107,7 +107,7 @@ export const listProductsByChannelResultSchema = z.object({
   channel_id: z.string(),
   channel_name: z.string(),
   item_type: z.string(),
-  items: z.array(getProductResultSchema),
+  items: z.array(productSchema),
   limit: z.number(),
   offset: z.number(),
   total_count: z.number(),
