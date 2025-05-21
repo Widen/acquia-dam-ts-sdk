@@ -343,7 +343,7 @@ export class AssetsApi {
    * @returns a Promise containing a list of Upload Profiles
    * @see {@link https://widenv2.docs.apiary.io/#reference/assets/creating-new-assets/list-all-upload-profiles}
    */
-  public listUploadProfiles(): Promise<ListUploadProfilesResult[]> {
+  public listUploadProfiles(): Promise<ListUploadProfilesResult> {
     return this._client.sendRequest({
       apiVersion: '2',
       method: 'GET',
