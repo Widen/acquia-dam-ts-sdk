@@ -135,7 +135,7 @@ export interface SearchAssetsResult {
   include_archived: boolean
   include_deleted: boolean
   item_type: string
-  items: GetAssetResult[]
+  items: Asset[]
   limit: number
   offset: number
   query: string | null

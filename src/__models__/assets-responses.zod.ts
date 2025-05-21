@@ -21,6 +21,15 @@ export const assetPropertiesExpandSchema = z.object({
   popularity: z.number(),
 })
 
+export const embedsExpandSchema = z.record(
+  z.object({
+    apps: z.array(z.string()),
+    html: z.string(),
+    share: z.string(),
+    url: z.string(),
+  })
+)
+
 export const filePropertiesExpandSchema = z.object({
   format: z.string(),
   format_type: z.string(),
@@ -216,10 +225,11 @@ export const getAssetResultSchema = z.object({
   created_date: z.date(),
   current_version: z.boolean(),
   deleted_date: z.date().nullable(),
-  embeds: z.null(),
+  embeds: embedsExpandSchema.nullable(),
   expanded: z.object({
     asset_properties: z.boolean(),
     download_link: z.boolean().optional(),
+    embeds: z.boolean(),
     file_properties: z.boolean(),
     metadata: z.boolean(),
     metadata_info: z.boolean(),
@@ -255,7 +265,7 @@ export const searchAssetsResultSchema = z.object({
   include_archived: z.boolean(),
   include_deleted: z.boolean(),
   item_type: z.string(),
-  items: z.array(getAssetResultSchema),
+  items: z.array(assetSchema),
   limit: z.number(),
   offset: z.number(),
   query: z.string().nullable(),

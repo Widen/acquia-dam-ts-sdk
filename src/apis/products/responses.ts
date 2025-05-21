@@ -60,7 +60,7 @@ export interface ListProductsByChannelResult {
   channel_id: string
   channel_name: string
   item_type: string
-  items: GetProductResult[]
+  items: Product[]
   limit: number
   offset: number
   total_count: number
@@ -94,7 +94,7 @@ export interface SearchProductsResult {
   }
   filters: ProductSearchFilter[]
   item_type: string
-  items: GetProductResult[]
+  items: Product[]
   limit: number
   offset: number
   query: string | null
