@@ -97,11 +97,25 @@ export const getProductResultSchema = z.object({
   sku: z.string(),
 })
 
-export const productSchema = getProductResultSchema
-
 const productSearchFilterSchema = z.any()
 
 const productSortSchema = z.any()
+
+export const productSchema = getProductResultSchema
+
+export const searchProductsResultSchema = z.object({
+  expanded: z.object({
+    attributes: z.boolean().optional(),
+  }),
+  filters: z.array(productSearchFilterSchema),
+  item_type: z.string(),
+  items: z.array(productSchema),
+  limit: z.number(),
+  offset: z.number(),
+  query: z.string().nullable(),
+  sort: productSortSchema,
+  total_count: z.number(),
+})
 
 export const listProductsByChannelResultSchema = z.object({
   channel_id: z.string(),
@@ -110,19 +124,5 @@ export const listProductsByChannelResultSchema = z.object({
   items: z.array(productSchema),
   limit: z.number(),
   offset: z.number(),
-  total_count: z.number(),
-})
-
-export const searchProductsResultSchema = z.object({
-  expanded: z.object({
-    attributes: z.boolean().optional(),
-  }),
-  filters: z.array(productSearchFilterSchema),
-  item_type: z.string(),
-  items: z.array(getProductResultSchema),
-  limit: z.number(),
-  offset: z.number(),
-  query: z.string().nullable(),
-  sort: productSortSchema,
   total_count: z.number(),
 })

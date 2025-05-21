@@ -94,7 +94,7 @@ export interface SearchProductsResult {
   }
   filters: ProductSearchFilter[]
   item_type: string
-  items: GetProductResult[]
+  items: Product[]
   limit: number
   offset: number
   query: string | null
