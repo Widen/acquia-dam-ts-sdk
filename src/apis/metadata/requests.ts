@@ -33,8 +33,11 @@ export type UpdateMetadataFieldValueParams = BaseUpdateMetadataFieldValue &
   ({ index: number } | { value: string })
 
 export type MetadataFieldType =
+  | 'checkboxes'
   | 'date'
   | 'numeric'
+  | 'selection_list'
+  | 'selection_list_multi'
   | 'text'
   | 'text_long'
   | 'text_multi_line'
