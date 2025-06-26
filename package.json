@@ -1,6 +1,6 @@
 {
   "name": "acquia-dam-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Interact with the Acquia DAM API",
   "license": "ISC",
   "author": "Acquia",
