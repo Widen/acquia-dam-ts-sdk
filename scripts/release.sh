@@ -7,4 +7,8 @@ if [[ -z "${CI}" ]]; then
 fi
 
 yarn ts
+
+yarn build:docs
+aws s3 sync ./doc s3://dam-acquia-docs-us-east-1/acquia-dam-ts-sdk --delete
+
 yarn changeset publish
