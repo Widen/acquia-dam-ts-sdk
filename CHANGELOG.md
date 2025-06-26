@@ -1,5 +1,11 @@
 # acquia-dam-sdk
 
+## 1.0.1
+
+### Patch Changes
+
+- 9ffe10b: Add missing values to MetadataFieldType definition
+
 ## 1.0.0
 
 ### Major Changes
