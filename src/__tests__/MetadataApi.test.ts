@@ -5,8 +5,8 @@ import {
   listMetadataTypesResultSchema,
   listViewableMetadataFieldsResultSchema,
 } from '__models__/metadata-responses.zod'
-import { MetadataApi } from 'apis'
-import AcquiaDAM from 'index'
+import { MetadataApi } from 'apis/metadata/api'
+import { ApiClient } from 'client'
 
 let client: MetadataApi
 
@@ -17,7 +17,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).metadata
+  client = new MetadataApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Assets Metadata: ', () => {

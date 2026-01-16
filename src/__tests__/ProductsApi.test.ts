@@ -8,8 +8,8 @@ import {
   productSchema,
   searchProductsResultSchema,
 } from '__models__/products-responses.zod'
-import { ProductsApi } from 'apis'
-import AcquiaDAM from 'index'
+import { ProductsApi } from 'apis/products/api'
+import { ApiClient } from 'client'
 
 let client: ProductsApi
 
@@ -20,7 +20,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).products
+  client = new ProductsApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Products: ', () => {

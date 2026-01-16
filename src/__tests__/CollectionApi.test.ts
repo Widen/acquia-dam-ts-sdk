@@ -3,8 +3,8 @@ import {
   createCollectionResultSchema,
   listCollectionsResultSchema,
 } from '__models__/collections-responses.zod'
-import { CollectionsApi } from 'apis'
-import AcquiaDAM from 'index'
+import { CollectionsApi } from 'apis/collections/api'
+import { ApiClient } from 'client'
 
 let client: CollectionsApi
 
@@ -15,7 +15,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).collections
+  client = new CollectionsApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Assets Collections: ', () => {

@@ -1,7 +1,7 @@
 import { expect, it, describe, beforeAll, jest } from '@jest/globals'
 import { getSearchConnectorResultSchema } from '__models__/search-connector-responses.zod'
-import { SearchConnectorApi } from 'apis'
-import AcquiaDAM from 'index'
+import { SearchConnectorApi } from 'apis/search-connector/api'
+import { ApiClient } from 'client'
 
 let client: SearchConnectorApi
 
@@ -12,7 +12,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).searchConnector
+  client = new SearchConnectorApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Get Search Connector Url: ', () => {

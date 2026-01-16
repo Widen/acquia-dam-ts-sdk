@@ -7,8 +7,8 @@ import {
   listOrderProfileResultSchema,
   getOrderDetailsResultSchema,
 } from '__models__/orders-responses.zod'
-import { OrdersApi } from 'apis'
-import AcquiaDAM from 'index'
+import { OrdersApi } from 'apis/orders/api'
+import { ApiClient } from 'client'
 
 let client: OrdersApi
 
@@ -19,7 +19,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).orders
+  client = new OrdersApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Assets Orders: ', () => {

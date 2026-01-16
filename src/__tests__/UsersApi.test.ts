@@ -3,8 +3,8 @@ import {
   getContactResultSchema,
   getUserResultSchema,
 } from '__models__/users-responses.zod'
-import { UsersApi } from 'apis'
-import AcquiaDAM from 'index'
+import { UsersApi } from 'apis/users/api'
+import { ApiClient } from 'client'
 
 let client: UsersApi
 
@@ -15,7 +15,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).users
+  client = new UsersApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Users: ', () => {
