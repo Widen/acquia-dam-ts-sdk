@@ -81,6 +81,7 @@ export interface ListIntegrationLinksResult {
 export interface UploadProfile {
   asset_groups: string[]
   immediate_release: boolean
+  metadata_type: string
   name: string
   release_date: Date | null
 }

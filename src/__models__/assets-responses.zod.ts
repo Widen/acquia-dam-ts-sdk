@@ -96,6 +96,7 @@ export const listIntegrationLinksResultSchema = z.object({
 export const uploadProfileSchema = z.object({
   asset_groups: z.array(z.string()),
   immediate_release: z.boolean(),
+  metadata_type: z.string(),
   name: z.string(),
   release_date: z.date().nullable(),
 })
