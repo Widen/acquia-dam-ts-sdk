@@ -74,7 +74,7 @@ export const getProductResultSchema = z.object({
   featured_image: z
     .object({
       id: z.string(),
-      url: z.string(),
+      url: z.string().nullable(),
     })
     .nullable(),
   last_updated_timestamp: z.date(),

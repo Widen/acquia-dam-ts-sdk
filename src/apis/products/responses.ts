@@ -9,7 +9,7 @@ export interface GetProductResult {
   created_date: Date
   featured_image: {
     id: string
-    url: string
+    url: string | null
   } | null
   last_updated_timestamp: Date
   name: string

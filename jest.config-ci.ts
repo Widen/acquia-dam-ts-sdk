@@ -1,6 +1,7 @@
 import type { Config } from 'jest'
 
 const config: Config = {
+  changedSince: 'origin/main',
   clearMocks: true,
   collectCoverage: false,
   coveragePathIgnorePatterns: ['/node_modules/', '/__models__/'],
