@@ -119,7 +119,7 @@ export class AssetsApi {
     body.append('filename', params.filename)
 
     if (params.metadata) {
-      body.append('metadata', JSON.stringify(params.metadata))
+      body.append('metadata', JSON.stringify({ fields: params.metadata }))
     }
 
     if (params.file) {
