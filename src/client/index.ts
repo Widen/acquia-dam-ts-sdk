@@ -9,7 +9,7 @@ import type {
 /*
  * Acquia DAM
  * This is the interface for interacting with the Acquia DAM API.
- * Both [V1](https://widenv1.docs.apiary.io/#) and [V2](https://widenv2.docs.apiary.io/#) APIs are supported.
+ * Both [V1](https://docs.acquia.com/acquia-dam/api-v1) and [V2](https://docs.acquia.com/acquia-dam/api-v2) APIs are supported.
  *
  * Do not edit this class manually.
  */

@@ -27,6 +27,7 @@ export class WorkflowApi {
    * Workflow objects represent projects and deliverables stored in the Acquia Workflow system. The API allows you to retrieve, create, delete, and close deliverables and projects.
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -36,7 +37,7 @@ export class WorkflowApi {
    * Add a deliverable to a project
    * @param params Information about the request
    * @returns Promise containing information about the added deliverable
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/projects/add-deliverable-to-project}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/deliverablesAddToProject}
    */
   public addDeliverable(
     params: AddDeliverableParams
@@ -56,7 +57,7 @@ export class WorkflowApi {
    * Close the deliverable. Optionally, provide a `filename` and `upload_profile` to move the deliverable over to Assets
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/deliverables/close-deliverable}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/deliverablesCloseForProject}
    */
   public closeDeliverable(params: CloseDeliverableParams): Promise<void> {
     const { project_id, deliverable_id, ...body } = params
@@ -74,7 +75,7 @@ export class WorkflowApi {
    * Create a new project
    * @param params Information about the request
    * @returns Promise containing the new project's ID
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/projects/create-new-project}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/createProject}
    */
   public createProject(
     params: CreateProjectParams
@@ -92,7 +93,7 @@ export class WorkflowApi {
    * @param project_id Project ID
    * @param deliverable_id Deliverable ID
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/deliverables/delete-deliverable}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/deliverablesDeleteForProject}
    */
   public deleteDeliverable(
     project_id: string,
@@ -111,7 +112,7 @@ export class WorkflowApi {
    * Delete a project
    * @param project_id Project ID
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/projects/delete-project}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/deleteProject}
    */
   public deleteProject(project_id: string): Promise<void> {
     const path = `workflow/projects/${project_id}`
@@ -127,7 +128,7 @@ export class WorkflowApi {
    * Retrieve information about a deliverable
    * @param params Information about the request
    * @returns Promise containing information about the deliverable
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/deliverables/retrieve-deliverable-by-id}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/deliverablesRetrieveForProjectById}
    */
   public getDeliverable(
     params: GetDeliverableParams
@@ -147,7 +148,7 @@ export class WorkflowApi {
    * Retrieve information about a project
    * @param params Information about the request
    * @returns Promise containing information about the deliverable
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/projects/retrieve-by-project-id}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/retrieveProjectById}
    */
   public getProject(params: GetProjectParams): Promise<GetProjectResult> {
     const { project_id, ...queryStringParams } = params
@@ -165,7 +166,7 @@ export class WorkflowApi {
    * Retrieve all deliverables for a project
    * @param params Information about the request
    * @returns Promise containing a list of deliverables
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/deliverables/retrieve-all-project-deliverables}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/deliverablesRetrieveForProject}
    */
   public listDeliverables(
     params: ListDeliverablesParams
@@ -185,7 +186,7 @@ export class WorkflowApi {
    * Retrieve all supporting files for a project
    * @param project_id Project ID
    * @returns Promise containing a list of supporting files
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-app-projects/projects/retrieve-supporting-files}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/retrieveProjectSupportFiles}
    */
   public listSupportingFiles(
     project_id: string
@@ -203,6 +204,7 @@ export class WorkflowApi {
    * Upload proof to a deliverable
    * @param params Information about the request
    * @returns Promise containing information about the deliverable
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-App-Projects/operation/deliverablesUploadProof}
    */
   public uploadProof(params: UploadProofParams): Promise<UploadProofResult> {
     const { project_id, deliverable_id, ...body } = params

@@ -17,6 +17,7 @@ export class AnalyticsApi {
    * Note: Three years of analytics data is available, starting from January 1, 2021 onward. The default `date_range` filter is from this date until today.
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Analytics}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -26,7 +27,7 @@ export class AnalyticsApi {
    * Retrieve a list of Asset Download events
    * @param params Information about the request
    * @returns Promise containing the Download Asset events that meet the request criteria
-   * @see {@link https://widenv2.docs.apiary.io/#reference/analytics/analytics/list-asset-downloads}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Analytics/operation/listAssetDownloads}
    */
   public listAssetDownloads(
     params: AnalyticsRequestParams
@@ -43,7 +44,7 @@ export class AnalyticsApi {
    * Retrieve a list of Asset Share events
    * @param params Information about the request
    * @returns Promise containing the Share Asset events that meet the request criteria
-   * @see {@link https://widenv2.docs.apiary.io/#reference/analytics/analytics/list-asset-shares}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Analytics/operation/listAssetShares}
    */
   public listAssetShares(
     params: AnalyticsRequestParams
@@ -60,7 +61,7 @@ export class AnalyticsApi {
    * Retrieve a list of View Asset events
    * @param params Information about the request
    * @returns Promise containing the View Asset events that meet the request criteria
-   * @see {@link https://widenv2.docs.apiary.io/#reference/analytics/analytics/list-asset-views}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Analytics/operation/listAssetViews}
    */
   public listAssetViews(
     params: AnalyticsRequestParams

@@ -23,6 +23,8 @@ export class WebhooksApi {
    * Create, list, read, ping, edit, and delete Acquia DAM webhook configurations. Create, List, and Delete Workflow Webhooks
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Acquia-DAM-Webhooks}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-Webhooks}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -32,7 +34,7 @@ export class WebhooksApi {
    * Create a new Assets webhook
    * @param params Information about the request
    * @returns Promise containing the new webhook configuration ID
-   * @see {@link https://widenv2.docs.apiary.io/#reference/acquia-dam-webhooks/manage-acquia-dam-webhooks/create-webhook}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Acquia-DAM-Webhooks/operation/createWebhook}
    */
   public createAssetsWebhook(
     params: CreateAssetsWebhookParams
@@ -49,7 +51,7 @@ export class WebhooksApi {
    * Create a Workflow webhook
    * @param params Information about the request
    * @returns Promise containing information about the created webhook
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-webhooks/webhooks/add-new-webhook}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-Webhooks/operation/workflowAddWebhook}
    */
   public createWorkflowWebhook(
     params: CreateWorkflowWebhookParams
@@ -66,6 +68,7 @@ export class WebhooksApi {
    * Delete an Assets webhook
    * @param id Assets Webhook configuration ID
    * @returns Promise containing no information
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Acquia-DAM-Webhooks/operation/deleteWebhook}
    */
   public deleteAssetsWebhook(id: string): Promise<void> {
     const path = `webhooks/configurations/${id}`
@@ -81,7 +84,7 @@ export class WebhooksApi {
    * Delete a Workflow webhook
    * @param event The event name
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-webhooks/webhooks/delete-webhook}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-Webhooks/operation/workflowDeleteWebhook}
    */
   public deleteWorkflowWebhook(event: WorkflowEvent): Promise<void> {
     const body = { event }
@@ -98,7 +101,7 @@ export class WebhooksApi {
    * Edit an Assets webhook configuration
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/acquia-dam-webhooks/manage-acquia-dam-webhooks/edit-webhook}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Acquia-DAM-Webhooks/operation/deleteWebhook}
    */
   public editAssetsWebhook(params: EditAssetsWebhookParams): Promise<void> {
     const { id, patch, ...body } = params
@@ -118,7 +121,7 @@ export class WebhooksApi {
    * Retrieve information about an Assets webhook
    * @param id Webhook configuration ID
    * @returns Promise containing information about a webhook
-   * @see {@link https://widenv2.docs.apiary.io/#reference/acquia-dam-webhooks/manage-acquia-dam-webhooks/get-webhook-by-id}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Acquia-DAM-Webhooks/operation/getWebhook}
    */
   public getAssetsWebhook(id: string): Promise<GetAssetsWebhookResult> {
     const path = `webhooks/configurations/${id}`
@@ -134,7 +137,7 @@ export class WebhooksApi {
    * Retrieve a list of Assets webhooks
    * @param params Information about the request
    * @returns Promise containing a list of Assets webhooks
-   * @see {@link https://widenv2.docs.apiary.io/#reference/acquia-dam-webhooks/manage-acquia-dam-webhooks/list-webhooks}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Acquia-DAM-Webhooks/operation/listWebhooks}
    */
   public listAssetsWebhooks(
     params?: ListAssetsWebhooksParams
@@ -150,7 +153,7 @@ export class WebhooksApi {
   /**
    * Retrieve a list of active Workflow webhooks
    * @returns Promise containing a list of Workflow webhooks
-   * @see {@link https://widenv2.docs.apiary.io/#reference/workflow-webhooks/webhooks/list-all-webhooks}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Workflow-Webhooks/operation/workflowListWebhooks}
    */
   public listWorkflowWebhooks(): Promise<ListWorkflowWebhooksResult> {
     return this._client.sendRequest({
@@ -164,7 +167,7 @@ export class WebhooksApi {
    * Ping an Assets Webhook
    * @param id Assets Webhook Configuration ID
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/acquia-dam-webhooks/manage-acquia-dam-webhooks/ping-webhook-by-id}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Acquia-DAM-Webhooks/operation/pingWebhook}
    */
   public pingAssetsWebhook(id: string): Promise<void> {
     const path = `webhooks/configurations/${id}/ping`

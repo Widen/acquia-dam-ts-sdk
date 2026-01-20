@@ -22,6 +22,7 @@ export class OrdersApi {
    * Provides information about Orders and Conversions
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -31,7 +32,7 @@ export class OrdersApi {
    * This can be called before attempting to create an order to determine which items will be removed from the order. Situations include an asset that has been deleted or an asset the user does not have permission to order. Any items returned in the removedItems list, will be removed automatically when the order is submitted.
    * @param assets Array of asset UUIDs
    * @returns Promise containing the assets that will not be ordered
-   * @see {@link https://widenv1.docs.apiary.io/#reference/orders/create-order/clean-assets-for-order}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/cleanOrderItems}
    */
   public cleanAssets(assets: string[]): Promise<CleanAssetsResult> {
     const body = {
@@ -50,7 +51,7 @@ export class OrdersApi {
    * Create an asset order.
    * @param params Information about the request
    * @returns Promise containing information about the created order
-   * @see {@link https://widenv1.docs.apiary.io/#reference/orders/create-order/create-order}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/createOrder}
    */
   public createOrder(params: CreateOrderParams): Promise<CreateOrderResult> {
     return this._client.sendRequest({
@@ -65,7 +66,7 @@ export class OrdersApi {
    * Used to submit a request to begin the creation of a zip archive for a specific order
    * @param uuid The order UUID
    * @returns Promise containing no information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/orders/zip-archives/create-zip-archive}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/createZipForOrder}
    */
   public createZipArchive(uuid: string): Promise<void> {
     const path = `order/uuid/${uuid}/zip`
@@ -81,6 +82,8 @@ export class OrdersApi {
    * Gets order information by uuid or sequence number and, if the order conversion status is 'Completed', up to 100 assets and associated conversions and pickup urls for that order. If the order conversion status is not 'Completed', only order details (uuid, conversion status, assets in order, and sequence number) will appear in the response.
    * @param params Information about the request
    * @returns Promise containing information about the order
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/getOrderDetailByUUID}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/getOrderDetailBySequenceNum}
    */
   public getOrderDetails(
     params: GetOrderDetailsParams
@@ -116,7 +119,7 @@ export class OrdersApi {
    * Used to check the status of an archive operation that has previously been submitted. If the archive operation is complete, this call returns a download link for the zip archive.
    * @param uuid The order UUID
    * @returns Promise containing information about the status of the Zip archive
-   * @see {@link https://widenv1.docs.apiary.io/#reference/orders/zip-archives/get-zip-archive-status/link}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/getZipStatusOrDownloadLink}
    */
   public getZipStatus(uuid: string): Promise<GetZipStatusResult> {
     const path = `order/uuid/${uuid}/zip`
@@ -132,7 +135,7 @@ export class OrdersApi {
    * Retrieves the list of conversions available for a specific order profile and set of assets.
    * @param params Information about the request
    * @returns Promise containing the list of available conversions
-   * @see {@link https://widenv1.docs.apiary.io/#reference/orders/conversions-for-order/conversions-for-order}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/getApplicableConversions}
    */
   public listConversionsForOrder(
     params: ListConversionsForOrderParams
@@ -154,7 +157,7 @@ export class OrdersApi {
   /**
    * Gets the Order Profiles available for sending orders via the internet
    * @returns Promise containing the list of available order profiles
-   * @see {@link https://widenv1.docs.apiary.io/#reference/orders/internet-order-profile-list/internet-order-profile-list}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Orders/operation/getDirectorInternetProfiles}
    */
   public listOrderProfiles(): Promise<ListOrderProfileResult> {
     return this._client.sendRequest({

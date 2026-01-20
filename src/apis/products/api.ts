@@ -31,6 +31,7 @@ export class ProductsApi {
    * The Products API provides access to product information stored in Acquia Entries. The API allows you to create, retrieve, delete, and update products.
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -40,7 +41,7 @@ export class ProductsApi {
    * Create a new product
    * @param params Information about the request
    * @returns Promise containing the new Product ID
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/create-a-new-product}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/createProduct}
    */
   public createProduct(
     params: CreateProductParams
@@ -57,7 +58,7 @@ export class ProductsApi {
    * Delete a product
    * @param id Product ID
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/delete}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/deleteProduct}
    */
   public deleteProduct(id: string): Promise<void> {
     const path = `products/${id}`
@@ -73,7 +74,7 @@ export class ProductsApi {
    * Retrieve information about a product
    * @param id Product ID
    * @returns Promise containing information about a product
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/retrieve-by-id}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/retrieveProductById}
    */
   public getProduct(id: string): Promise<GetProductResult> {
     const path = `products/${id}`
@@ -89,7 +90,7 @@ export class ProductsApi {
    * Retrieve a list of channels
    * @param params Information about the request
    * @returns Promise containing a list of channels
-   * @see {@link https://widenv2.docs.apiary.io/#reference/channels/channels/list-channels}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Channels/operation/listChannels}
    */
   public listChannels(
     params?: ListChannelsParams
@@ -106,7 +107,7 @@ export class ProductsApi {
    * The Channel Products endpoint returns a list of products associated with a given channel in Entries. Only the products and attributes that are configured for the channel will be included in the response
    * @param params Information about the request
    * @returns Promise containing a list of products in the channel
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products-for-channel/list-products-for-channel}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/listProductsForChannel}
    */
   public listProductsByChannel(
     params: ListProductsByChannelParams
@@ -126,7 +127,7 @@ export class ProductsApi {
    * Retrieve a list of product categories
    * @param params Information about the request
    * @returns Promise containing a list of product categories
-   * @see {@link https://widenv2.docs.apiary.io/#reference/categories/product-categories/list-product-categories}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Categories/operation/listProductCategories}
    */
   public listProductCategories(
     params?: ListProductsCategoryParams
@@ -143,7 +144,7 @@ export class ProductsApi {
    * Retrieve a list of product types
    * @param params Information about the request
    * @returns Promise containing a list of product types
-   * @see {@link https://widenv2.docs.apiary.io/#reference/product-types/product-types/list-product-types}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Product-Types/operation/listProductTypes}
    */
   public listProductTypes(
     params?: ListProductTypesParams
@@ -161,7 +162,7 @@ export class ProductsApi {
    * @param id Product ID
    * @param name New product name
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/rename}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/renameProduct}
    */
   public renameProduct(id: string, name: string): Promise<void> {
     const path = `products/${id}/rename`
@@ -181,7 +182,7 @@ export class ProductsApi {
    * Search for products
    * @param params Information about the request
    * @returns Promise containing a list of products
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/list-products-by-search-query}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/listProductsBySearchQuery}
    */
   public searchProducts(
     params?: SearchProductsParams
@@ -198,7 +199,7 @@ export class ProductsApi {
    * Update a product's attribute values
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/update-attribute-values}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/updateAttributeValues}
    */
   public updateAttributes(params: UpdateAttributesParams): Promise<void> {
     const { id, ...body } = params
@@ -216,7 +217,7 @@ export class ProductsApi {
    * Update a product's categories
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/update-product-category}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/updateProductCategory}
    */
   public updateProductCategory(
     params: UpdateProductCategoryParams
@@ -236,7 +237,7 @@ export class ProductsApi {
    * Update a product's featured image
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/update-featured-image}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/updateFeaturedImage}
    */
   public updateFeaturedImage(params: UpdateFeaturedImageParams): Promise<void> {
     const { id, ...body } = params
@@ -254,7 +255,7 @@ export class ProductsApi {
    * Update a product's parent product
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/update-parent-product}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/updateParentProduct}
    */
   public updateParentProduct(params: UpdateParentProductParams): Promise<void> {
     const { id, ...body } = params
@@ -272,7 +273,7 @@ export class ProductsApi {
    * Update a product's type
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/products/products/update-product-type}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Products/operation/updateProductType}
    */
   public updateProductType(params: UpdateProductTypeParams): Promise<void> {
     const { id, ...body } = params

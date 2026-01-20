@@ -19,6 +19,8 @@ export class CategoriesApi {
    * Provides information about Categories and the Assets contained in them
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Categories}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Categories}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -28,7 +30,7 @@ export class CategoriesApi {
    * Add or remove multiple assets from multiple categories
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/categories/category-assets/adding/removing-assets}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Categories/operation/updateCategoryAssets}
    */
   public addOrRemoveAsets(params: AddRemoveAssetsParams): Promise<void> {
     const { assets_to_add = [], assets_to_remove = [], categories } = params
@@ -56,7 +58,7 @@ export class CategoriesApi {
    * Create a new category
    * @param params Information about the request
    * @returns Promise containing information about the new category
-   * @see {@link https://widenv1.docs.apiary.io/#reference/categories/createedit-category/create-category}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Categories/operation/createCategory}
    */
   public createCategory(
     params: CreateCategoryParams
@@ -73,7 +75,7 @@ export class CategoriesApi {
    * Update a category's information
    * @param params Information about the request
    * @returns Promise containing information about the modified category
-   * @see {@link https://widenv1.docs.apiary.io/#reference/categories/createedit-category/edit-category}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Categories/operation/editCategory}
    */
   public editCategory(
     params: EditCategoryParams
@@ -93,7 +95,7 @@ export class CategoriesApi {
    * Gets the category tree sctructure for the entire site
    * @param includeEmpty `true` if the response should include categories with no assets.
    * @returns Promise containing the category tree structure
-   * @see {@link https://widenv1.docs.apiary.io/#reference/categories/category-tree/category-tree}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Categories/operation/getCategoryTree}
    */
   public getCategoryTree(includeEmpty?: boolean): Promise<CategoryTreeResult> {
     const queryStringParams = {
@@ -112,7 +114,7 @@ export class CategoriesApi {
    * Retrieve a list of child categories.
    * @param categoryPath Optional parent category path. Slashes in category names must be escaped with a backslash. If omitted, the top-level categories will be returned.
    * @returns Promise containing a list of asset categories
-   * @see {@link https://widenv2.docs.apiary.io/#reference/categories/asset-categories/list-asset-categories}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Categories/operation/listAssetCategories}
    */
   public listCategories(categoryPath?: string): Promise<ListCategoriesResult> {
     let path = 'categories'

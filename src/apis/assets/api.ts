@@ -47,6 +47,8 @@ export class AssetsApi {
    * Asset objects represent stored files in the DAM system. The API allows you to create, update, and delete Assets. You can search for assets, matching specific search criteria or load an individual asset by unique ID.
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Assets}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -57,7 +59,7 @@ export class AssetsApi {
    * For bulk handling of assets, use the CategoriesApi.
    * @param params Information about the request
    * @returns Promise containing no data
-   * @see {@link https://widenv1.docs.apiary.io/#reference/categories/category-assets/adding/removing-assets}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Categories/operation/updateCategoryAssets}
    */
   public async addAssetToCategories(params: CategoriesParams): Promise<void> {
     const { categories } = params
@@ -74,7 +76,7 @@ export class AssetsApi {
    * For bulk handling of assets, use the CollectionsApi.
    * @param params Information about the request
    * @returns Promise containing no data
-   * @see {@link https://widenv1.docs.apiary.io/#reference/collections/collection-assets/adding/removing-assets}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Collections/operation/addOrRemoveAssetsFromCollections}
    */
   public async addAssetToCollections(params: CollectionsParams): Promise<void> {
     const { collections } = params
@@ -91,7 +93,7 @@ export class AssetsApi {
    * After calling this endpoint, provide the `file_id` to the `create` function to create a new asset.
    * @param params Information about the request
    * @returns Promise containing the `file_id`
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/upload-files-in-chunks/complete-chunked-upload}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/uploadChunk3}
    */
   public completeChunkedUpload(
     params: CompleteChunkedUploadParams
@@ -109,7 +111,7 @@ export class AssetsApi {
    * For larger files, use a chunked upload.
    * @param params Information about the request
    * @returns Promise containing the asset's `id`
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/creating-new-assets/upload-a-file}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/uploadAsset}
    */
   public async createAsset(
     params: CreateAssetParams
@@ -154,7 +156,7 @@ export class AssetsApi {
    * Remove an alternate preview from an asset.
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/alternate-preview/delete-alternate-preview}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/alternatePreviewDelete}
    */
   public async deleteAlternatePreview(params: IdentifyAsset): Promise<void> {
     const id = await this.findAssetId(params)
@@ -171,7 +173,7 @@ export class AssetsApi {
    * Send an asset to the Pending Delete queue.
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/assets/delete}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetDelete}
    */
   public async deleteAsset(params: IdentifyAsset): Promise<void> {
     const id = await this.findAssetId(params)
@@ -226,8 +228,8 @@ export class AssetsApi {
    * Retrieve information about an individual asset.
    * @param params Information about the request
    * @returns Promise containing the asset data
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/assets/retrieve-by-id}
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/assets/retrieve-by-id-and-version}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetRetrieveById}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetRetrieveByIdAndVersion}
    */
   public async getAsset(params: GetAssetParams): Promise<GetAssetResult> {
     const {
@@ -259,7 +261,7 @@ export class AssetsApi {
    * All assigned fields for the asset will be included. Empty fields are repesented with an empty array.
    * @param params Information about the request
    * @returns Promise containing the asset's metadata only
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/asset-metadata/retrieve-asset-metadata}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetMetadataRetrieve}
    */
   public async getMetadata(params: IdentifyAsset): Promise<GetMetadataResult> {
     const id = await this.findAssetId(params)
@@ -277,7 +279,7 @@ export class AssetsApi {
    * The object structure returned by search endpoint and this method are identical.
    * @param params Information about the request
    * @returns Promise containing the asset's security only
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/asset-security/retrieve-asset-security}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetRetrieveSecurity}
    */
   public async getSecurity(params: IdentifyAsset): Promise<GetSecurityResult> {
     const id = await this.findAssetId(params)
@@ -293,7 +295,7 @@ export class AssetsApi {
   /**
    * Get a list of Asset Groups that the calling User has permission to view.
    * @returns Promise containing a list of security groups
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/asset-group-list/get-asset-groups}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetGroupsGet}
    */
   public listAssetGroups(): Promise<ListAssetGroupsResult> {
     return this._client.sendRequest({
@@ -307,7 +309,7 @@ export class AssetsApi {
    * Retrieve a list of child categories.
    * @param categoryPath Optional parent category name. If omitted, the top-level categories will be returned.
    * @returns Promise containing a list of asset categories
-   * @see {@link https://widenv2.docs.apiary.io/#reference/categories/asset-categories/list-asset-categories}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Categories/operation/listAssetCategories}
    */
   public listCategories(categoryPath?: string): Promise<ListCategoriesResult> {
     return new CategoriesApi(this._client).listCategories(categoryPath)
@@ -317,7 +319,7 @@ export class AssetsApi {
    * Retrieve a list of collections.
    * @param params Information about the request
    * @returns Promise containing a list of collections
-   * @see {@link https://widenv2.docs.apiary.io/#reference/collections/collections/list-collections}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Collections/operation/listCollections}
    */
   public listCollections(
     params: ListCollectionsParams
@@ -328,7 +330,7 @@ export class AssetsApi {
   /**
    * Retrieve a list of integration links
    * @returns a Promise containing a list of integration links
-   * @see {@link https://widenv1.docs.apiary.io/#reference/integration-links/integration-links/list-integration-links}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Integration-Links/operation/getIntegrationLinks}
    */
   public listIntegrationLinks(): Promise<ListIntegrationLinksResult> {
     return this._client.sendRequest({
@@ -341,7 +343,7 @@ export class AssetsApi {
   /**
    * Retrieve a list of upload profiles.
    * @returns a Promise containing a list of Upload Profiles
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/creating-new-assets/list-all-upload-profiles}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/uploadAssetProfilesList}
    */
   public listUploadProfiles(): Promise<ListUploadProfilesResult> {
     return this._client.sendRequest({
@@ -354,7 +356,7 @@ export class AssetsApi {
   /**
    * Retrieve a list of recognized file formats.
    * @returns a Promise containing a list of file formats
-   * @see {@link https://widenv1.docs.apiary.io/#reference/file-formats/file-format-list/file-format-list}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/File-Formats/operation/getFileFormats}
    */
   public listFileFormats(): Promise<ListFileFormatsResult> {
     return this._client.sendRequest({
@@ -368,7 +370,7 @@ export class AssetsApi {
    * Retrieve a list of asset versions.
    * @param params Information about the request
    * @returns Promise containing a list of asset versions
-   * @see {@link https://widenv1.docs.apiary.io/#reference/assets/asset-version-list/asset-version-list}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Assets/operation/getAssetVersions}
    */
   public async listVersions(
     params: IdentifyAsset
@@ -388,7 +390,7 @@ export class AssetsApi {
    * For bulk handling of assets, use the CategoriesApi.
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/categories/category-assets/adding/removing-assets}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Categories/operation/updateCategoryAssets}
    */
   public async removeAssetFromCatgories(
     params: CategoriesParams
@@ -407,7 +409,7 @@ export class AssetsApi {
    * For bulk handling of assets, use the CollectionsApi.
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/collections/collection-assets/adding/removing-assets}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Collections/operation/addOrRemoveAssetsFromCollections}
    */
   public async removeAssetFromCollections(
     params: CollectionsParams
@@ -425,7 +427,7 @@ export class AssetsApi {
    * Remove an integration link.
    * @param uuid The Integration Link UUID
    * @returns a Promise containing no information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/integration-links/integration-links/register-integration-link}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Integration-Links/operation/removeLink}
    */
   public removeIntegrationLink(uuid: string): Promise<void> {
     return this._client.sendRequest({
@@ -439,6 +441,7 @@ export class AssetsApi {
    * Register a new Integration Link.
    * @param params Information about the request
    * @returns a Promise containing information about the created Integration Link
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Integration-Links/operation/createLink}
    */
   public async registerIntegrationLink(
     params: RegisterIntegrationLinkParams
@@ -463,7 +466,7 @@ export class AssetsApi {
    * Change an asset's `filename`
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/assets/rename}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetRename}
    */
   public async renameAsset(params: RenameAssetParams): Promise<void> {
     const { new_filename } = params
@@ -485,7 +488,7 @@ export class AssetsApi {
    * Search for a list of assets via a query
    * @param params Information about the request
    * @returns Promise containing a list of assets that meet the search criteria
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/assets/list-by-search-query}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetListBySearchQuery}
    */
   public searchAssets(
     params?: SearchAssetsParams
@@ -501,7 +504,7 @@ export class AssetsApi {
   /**
    * Begins a chunked uploading session. The `session_id` in the response must be used for subsequent upload chunk and complete chunk calls. This `session_id` is good for 7 days.
    * @returns Promise containing the `session_id`
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/upload-files-in-chunks/start-chunked-upload}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/uploadChunk0}
    */
   public startChunkedUpload(): Promise<StartChunkedUploadResult> {
     return this._client.sendRequest({
@@ -515,7 +518,7 @@ export class AssetsApi {
    * Update an asset's `metadata` fields
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/asset-metadata/update-metadata}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetMetadataUpdate}
    */
   public async updateMetadata(params: UpdateMetadataParams): Promise<void> {
     const { external_id: _1, filename: _2, id: _3, patch, ...body } = params
@@ -538,7 +541,7 @@ export class AssetsApi {
    * Change an asset's metadata type
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/assets/metadata-type/update-metadata-type}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Assets/operation/updateMetadataType}
    */
   public async updateMetadataType(
     params: UpdateMetadataTypeParams
@@ -558,7 +561,7 @@ export class AssetsApi {
    * Update an asset's `security` fields
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/asset-security/update-security}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/assetUpdateSecurity}
    */
   public async updateSecurity(params: UpdateSecurityParams): Promise<void> {
     const { external_id: _1, filename: _2, id: _3, patch, ...body } = params
@@ -581,7 +584,7 @@ export class AssetsApi {
    * Upload a new file as an alternate preview to an Asset
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/alternate-preview/upload-alternate-preview}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/alternatePreviewUpload}
    */
   public async uploadAlternatePreview(
     params: UploadAlternatePreviewParams
@@ -605,7 +608,7 @@ export class AssetsApi {
    * Upload each piece of the file. The `tag` in each Upload Chunk response must be used in the Complete Chunked Upload call
    * @param params Information about the request
    * @returns Promise containing the tag for the chunk
-   * @see {@link https://widenv2.docs.apiary.io/#reference/assets/upload-files-in-chunks/upload-chunk}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Assets/operation/uploadChunk1}
    */
   public uploadChunk(params: UploadChunkParams): Promise<UploadChunkResult> {
     const body = new FormData()
