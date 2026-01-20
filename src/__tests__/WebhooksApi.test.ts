@@ -6,8 +6,8 @@ import {
   listAssetsWebhooksResultSchema,
   listWorkflowWebhooksResultSchema,
 } from '__models__/webhooks-responses.zod'
-import { WebhooksApi } from 'apis'
-import AcquiaDAM from 'index'
+import { WebhooksApi } from 'apis/webhooks/api'
+import { ApiClient } from 'client'
 
 let client: WebhooksApi
 
@@ -18,7 +18,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).webhooks
+  client = new WebhooksApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Assets Webhooks: ', () => {

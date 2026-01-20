@@ -1,7 +1,7 @@
 import { expect, it, describe, beforeAll, jest } from '@jest/globals'
 import { getUsageResultSchema } from '__models__/usage-responses.zod'
-import { UsageApi } from 'apis'
-import AcquiaDAM from 'index'
+import { UsageApi } from 'apis/usage/api'
+import { ApiClient } from 'client'
 
 let client: UsageApi
 
@@ -12,7 +12,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).usage
+  client = new UsageApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Get Usage: ', () => {

@@ -5,8 +5,8 @@ import {
   createEditCategoryResultSchema,
   listCategoriesResultSchema,
 } from '__models__/categories-responses.zod'
-import { CategoriesApi } from 'apis'
-import AcquiaDAM from 'index'
+import { CategoriesApi } from 'apis/categories/api'
+import { ApiClient } from 'client'
 
 let client: CategoriesApi
 
@@ -17,7 +17,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).categories
+  client = new CategoriesApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Assets Categories: ', () => {

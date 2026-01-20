@@ -4,8 +4,8 @@ import {
   listAttributesResultSchema,
   listAttributeVocabularyResultSchema,
 } from '__models__/attributes-responses.zod'
-import { AttributesApi } from 'apis'
-import AcquiaDAM from 'index'
+import { AttributesApi } from 'apis/attributes/api'
+import { ApiClient } from 'client'
 
 let client: AttributesApi
 
@@ -16,7 +16,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).attributes
+  client = new AttributesApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Product Attributes: ', () => {

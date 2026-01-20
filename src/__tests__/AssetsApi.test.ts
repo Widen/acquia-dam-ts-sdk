@@ -15,8 +15,8 @@ import {
   listIntegrationLinksResultSchema,
   listFileFormatsResultSchema,
 } from '__models__/assets-responses.zod'
-import { AssetsApi } from 'apis'
-import AcquiaDAM from 'index'
+import { AssetsApi } from 'apis/assets/api'
+import { ApiClient } from 'client'
 
 let client: AssetsApi
 
@@ -27,7 +27,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).assets
+  client = new AssetsApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Assets: ', () => {

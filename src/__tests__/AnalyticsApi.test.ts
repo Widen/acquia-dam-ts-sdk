@@ -7,8 +7,8 @@ import {
   shareAssetEventSchema,
   viewAssetEventSchema,
 } from '__models__/analytics-responses.zod'
-import { AnalyticsApi } from 'apis'
-import AcquiaDAM from 'index'
+import { AnalyticsApi } from 'apis/analytics/api'
+import { ApiClient } from 'client'
 
 let client: AnalyticsApi
 
@@ -19,7 +19,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).analytics
+  client = new AnalyticsApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Assets Analytics: ', () => {

@@ -8,8 +8,8 @@ import {
   supportingFileSchema,
   uploadProofResultSchema,
 } from '__models__/workflow-responses.zod'
-import { WorkflowApi } from 'apis'
-import AcquiaDAM from 'index'
+import { WorkflowApi } from 'apis/workflow/api'
+import { ApiClient } from 'client'
 
 let client: WorkflowApi
 
@@ -20,7 +20,7 @@ beforeAll(() => {
     throw new Error('API_TOKEN environment variable not set')
   }
 
-  client = new AcquiaDAM({ accessToken: process.env.API_TOKEN }).workflow
+  client = new WorkflowApi(new ApiClient(process.env.API_TOKEN))
 })
 
 describe('Workflow Projects: ', () => {
