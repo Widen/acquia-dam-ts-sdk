@@ -47,7 +47,11 @@ export default class AcquiaDAM {
    * @param params Information for creating the client
    */
   public constructor(params?: AcquiaDAMParams) {
-    this._client = params?.client ?? new ApiClient(params?.accessToken)
+    this._client = params?.client ?? new ApiClient()
+
+    if (params?.accessToken) {
+      this._client.accessToken = params.accessToken
+    }
   }
 
   /**
