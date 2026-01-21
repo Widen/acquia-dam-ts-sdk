@@ -1,7 +1,10 @@
 import type { Config } from 'jest'
 
 const config: Config = {
-  changedSince: 'origin/main',
+  changedSince:
+    process.env.GITHUB_REF === 'refs/heads/main'
+      ? process.env.PREV_COMMIT
+      : 'origin/main',
   clearMocks: true,
   collectCoverage: false,
   coveragePathIgnorePatterns: ['/node_modules/', '/__models__/'],

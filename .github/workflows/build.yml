@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       API_TOKEN: ${{ secrets.API_TOKEN }}
+      PREV_COMMIT: ${{ github.event.before }}
     strategy:
       matrix:
         node-version: [18.x, 22.x]
