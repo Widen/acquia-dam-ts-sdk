@@ -153,7 +153,7 @@ The SDK makes use of both the V1 and V2 APIs. The `@see` attribute tag is includ
 ## Additional Resources
 
 - [Full SDK Documentation](https://docs.acquia.com/acquia-dam/developer/typescript-sdk)
-- [V2 API Reference](https://widenv2.docs.apiary.io/)
-- [V1 API Reference](https://widenv1.docs.apiary.io/)
+- [V2 API Reference](https://docs.acquia.com/acquia-dam/api-v2)
+- [V1 API Reference](https://docs.acquia.com/acquia-dam/api-v1)
 - [API FAQ](https://community.acquia.com/acquiadam/s/article/API-FAQs)
 - [API Developer Blog](https://dev.acquia.com/blog?f%5B0%5D=product%3A2796&page=0)

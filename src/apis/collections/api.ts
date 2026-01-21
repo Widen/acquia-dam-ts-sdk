@@ -15,6 +15,8 @@ export class CollectionsApi {
    * Provides information about global, shared, and private Collections
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Collections}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Collections}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -24,7 +26,7 @@ export class CollectionsApi {
    * Add or remove multiple assets from multiple collections
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/collections/collection-assets/adding/removing-assets}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Collections/operation/addOrRemoveAssetsFromCollections}
    */
   public addOrRemoveAssets(params: AddRemoveAssetsParams): Promise<void> {
     const { assets_to_add = [], assets_to_remove = [], collections } = params
@@ -52,7 +54,7 @@ export class CollectionsApi {
    * Create a local (private) collection
    * @param params Information about the request
    * @returns Promise containing information about the created collection
-   * @see {@link https://widenv1.docs.apiary.io/#reference/collections/collection-assets/create-a-collection}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Collections/operation/createCollection}
    */
   public createCollection(
     params: CreateCollectionParams
@@ -78,7 +80,7 @@ export class CollectionsApi {
    * Retrieve a list of collections.
    * @param params Information about the request
    * @returns Promise containing a list of collections
-   * @see {@link https://widenv2.docs.apiary.io/#reference/collections/collections/list-collections}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Collections/operation/listCollections}
    */
   public listCollections(
     params: ListCollectionsParams

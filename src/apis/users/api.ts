@@ -10,6 +10,8 @@ export class UsersApi {
    * Query for information about users
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Users}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Users-and-Contacts}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -19,7 +21,7 @@ export class UsersApi {
    * Returns information about a user
    * @param id Retrieve a specific user's information. If omitted, information for the user associated with the provided access token will be returned.
    * @returns Promise containing the requested user information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/users/get-user-by-id/get-user-by-id}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Users/operation/getUserById}
    */
   public getUser(id?: string): Promise<GetUserResult> {
     let path = 'user'
@@ -38,7 +40,7 @@ export class UsersApi {
   /**
    * Return the calling user's contact. The UUID field may be used as a recipient to create an order.
    * @returns Promise containing the calling user's contact information
-   * @see {@link https://widenv1.docs.apiary.io/#reference/users-&-contacts/user-address/user-address}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Users-and-Contacts/operation/getUserAddress}
    */
   public getContact(): Promise<GetContactResult> {
     const path = 'user/address'

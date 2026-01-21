@@ -10,6 +10,7 @@ export class UsageApi {
    * Retrieve information about the monthly usage of the API
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Usage}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -18,7 +19,7 @@ export class UsageApi {
   /**
    * Reveals the total number of API requests made within the current month. Note: Usage data is aggregated periodically and a delay of up to 24 hours may occur
    * @returns Promise containing the monthly request count
-   * @see {@link https://widenv2.docs.apiary.io/#reference/usage/get-api-usage}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Usage/operation/getApiUsageSummary}
    */
   public getApiUsage(): Promise<GetUsageResult> {
     return this._client.sendRequest({

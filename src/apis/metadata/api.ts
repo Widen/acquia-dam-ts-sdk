@@ -20,6 +20,8 @@ export class MetadataApi {
    * These endpoints allow you to retrieve or modify information about existing metadata fields. If you want to retrieve or modify metadata applied to a specific asset, use the AssetsApi
    *
    * @param client Provide an instance of ApiClient.
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Metadata}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Metadata}
    */
   constructor(client: ApiClient) {
     this._client = client
@@ -29,7 +31,7 @@ export class MetadataApi {
    * Add a value to a controlled metadata field's vocabulary
    * @param params Information about the request
    * @returns Promise containing no data
-   * @see {@link https://widenv2.docs.apiary.io/#reference/metadata/controlled-vocabulary/add-value}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Metadata/operation/addControlledVocabularyValue}
    */
   public addValue(params: AddMetadataValueParams): Promise<void> {
     const { displayKey, ...body } = params
@@ -48,7 +50,7 @@ export class MetadataApi {
    * @param displayKey Display key of the controlled vocabulary metadata field
    * @param value The controlled vocabulary value you wish to remove
    * @returns Promise containing no data
-   * @see {@link https://widenv2.docs.apiary.io/#reference/metadata/controlled-vocabulary/delete-value}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Metadata/operation/deleteControlledVocabularyValue}
    */
   public deleteValue(displayKey: string, value: string): Promise<void> {
     const path = `metadata/${displayKey}/vocabulary/${value}`
@@ -64,7 +66,7 @@ export class MetadataApi {
    * Retrieve a list of controlled vocabulary metadata values
    * @param displayKey Display key of the controlled vocabulary metadata field
    * @returns Promise containing the vocabulary for the given field
-   * @see {@link https://widenv2.docs.apiary.io/#reference/metadata/controlled-vocabulary/list-values}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Metadata/operation/listControlledVocabularyValues}
    */
   public listFieldValues(displayKey: string): Promise<ListFieldValuesResult> {
     const path = `metadata/${displayKey}/vocabulary`
@@ -81,7 +83,7 @@ export class MetadataApi {
    * @param displayKey Display key of the controlled vocabulary metadata field
    * @param value The controlled vocabulary value
    * @returns Promise containing information for the metadata field value
-   * @see {@link https://widenv2.docs.apiary.io/#reference/metadata/controlled-vocabulary/retrieve-single-value}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Metadata/operation/getControlledVocabularyValue}
    */
   public getValue(
     displayKey: string,
@@ -99,7 +101,7 @@ export class MetadataApi {
   /**
    * Retrieves the list of all MetadataTypes in the system. In addition to the Type's name and use, a listing of all that Type's MetadataFields is provided. For MetadataFields with a controlled list of options, each value is also provided.
    * @returns Promise containing a list of metadata types
-   * @see {@link https://widenv1.docs.apiary.io/#reference/metadata/metadata-types-list/metadata-types-list}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v1#tag/Metadata/operation/getMetadataTypes}
    */
   public listMetadataTypes(): Promise<ListMetadataTypesResult> {
     return this._client.sendRequest({
@@ -113,7 +115,7 @@ export class MetadataApi {
    * Query for a list of metadata fields that you have permission to see
    * @param params Information about the request
    * @returns Promise containing information for the desired metadata fields
-   * @see {@link https://widenv2.docs.apiary.io/#reference/metadata/fields/viewable}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Metadata/operation/listMetadataFields}
    */
   public listViewableFields(
     params?: ListViewableMetadataFieldsParams
@@ -130,7 +132,7 @@ export class MetadataApi {
    * Update the display value or the index (or both) of a controlled metadata field value
    * @param params Information about the request
    * @returns Promise containing no information
-   * @see {@link https://widenv2.docs.apiary.io/#reference/metadata/controlled-vocabulary/update-value}
+   * @see {@link https://docs.acquia.com/acquia-dam/api-v2#tag/Metadata/operation/updateControlledVocabularyValue}
    */
   public updateValue(params: UpdateMetadataFieldValueParams): Promise<void> {
     const { displayKey, existingValue, ...body } = params
