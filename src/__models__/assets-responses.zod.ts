@@ -222,12 +222,14 @@ export const getAssetResultSchema = z.object({
   _links: z.object({
     download: z.string().optional(),
   }),
+  ai_tags: z.array(z.string()).nullable(),
   asset_properties: assetPropertiesExpandSchema.nullable(),
   created_date: z.date(),
   current_version: z.boolean(),
   deleted_date: z.date().nullable(),
   embeds: embedsExpandSchema.nullable(),
   expanded: z.object({
+    ai_tags: z.boolean(),
     asset_properties: z.boolean(),
     download_link: z.boolean().optional(),
     embeds: z.boolean(),
@@ -236,6 +238,7 @@ export const getAssetResultSchema = z.object({
     metadata_info: z.boolean(),
     metadata_vocabulary: z.boolean(),
     security: z.boolean(),
+    tags: z.boolean(),
     thumbnails: z.boolean(),
   }),
   external_id: z.string(),
@@ -249,6 +252,7 @@ export const getAssetResultSchema = z.object({
   released_and_not_expired: z.boolean(),
   security: securityExpandSchema.nullable(),
   status: statusExpandSchema.nullable(),
+  tags: z.array(z.string()).nullable(),
   thumbnails: thumbnailsExpandSchema.nullable(),
   version_id: z.string(),
 })

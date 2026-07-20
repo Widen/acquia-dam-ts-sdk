@@ -18,12 +18,14 @@ export interface GetAssetResult {
   _links: {
     download?: string
   }
+  ai_tags: string[] | null
   asset_properties: AssetPropertiesExpand | null
   created_date: Date
   current_version: boolean
   deleted_date: Date | null
   embeds: EmbedsExpand | null
   expanded: {
+    ai_tags: boolean
     asset_properties: boolean
     download_link?: boolean
     embeds: boolean
@@ -32,6 +34,7 @@ export interface GetAssetResult {
     metadata_info: boolean
     metadata_vocabulary: boolean
     security: boolean
+    tags: boolean
     thumbnails: boolean
   }
   external_id: string
@@ -45,6 +48,7 @@ export interface GetAssetResult {
   released_and_not_expired: boolean
   security: SecurityExpand | null
   status: StatusExpand | null
+  tags: string[] | null
   thumbnails: ThumbnailsExpand | null
   version_id: string
 }

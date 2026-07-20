@@ -199,6 +199,7 @@ export interface UploadChunkParams {
 export type SearchAssetsParams = BasicSearchParams | ScrollSearchParams
 
 export type AssetSearchExpand =
+  | 'ai_tags'
   | 'asset_properties'
   | 'embeds'
   | 'file_properties'
@@ -206,6 +207,7 @@ export type AssetSearchExpand =
   | 'metadata_info'
   | 'metadata_vocabulary'
   | 'security'
+  | 'tags'
   | 'thumbnails'
 
 export type AssetExpand = AssetSearchExpand | 'status'
