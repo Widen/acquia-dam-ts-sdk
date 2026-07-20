@@ -28,6 +28,7 @@ export interface GetAssetsWebhookResult {
   event_type: string
   last_delivered_date: Date | null
   last_pinged_date: Date | null
+  monitored_metadata_fields: string[] | null
   signing_enabled: boolean
   webhook_configuration_id: string
 }
