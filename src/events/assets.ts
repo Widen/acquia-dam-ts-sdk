@@ -22,13 +22,13 @@ export interface AssetDeletedEvent extends BaseAssetEvent {
 
 export interface AssetMetadataUpdatedEvent extends BaseAssetEvent {
   change: {
+    change: {
+      new_value: string[]
+      old_value: string[]
+    }
     field: {
       display_key: string
       value_type: string
-    }
-    change: {
-      old_value: string[]
-      new_value: string[]
     }
   }[]
   event_type: 'asset_metadata_value_updated'
