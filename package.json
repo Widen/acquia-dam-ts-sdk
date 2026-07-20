@@ -56,7 +56,7 @@
     "lint": "eslint --fix",
     "lint:check": "eslint",
     "models": "./scripts/generate-models.sh",
-    "precommit": "yarn models & yarn ts & yarn lint & yarn format",
+    "precommit": "yarn models && yarn ts & yarn lint & yarn format",
     "prepack": "yarn clean && yarn build:code",
     "test": "jest",
     "test:ci": "jest --config=jest.config-ci.ts",
