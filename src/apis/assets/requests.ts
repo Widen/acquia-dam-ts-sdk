@@ -98,6 +98,12 @@ export interface BasicSearchParams {
    */
   include_deleted?: boolean
   /**
+   * If true and enabled on the DAM, will include natural language search in your search results.
+   *
+   * @default false
+   */
+  include_natural_language_results?: boolean
+  /**
    * Numeric limit of the total number of results to retrieve
    *
    * Minimum: 1
