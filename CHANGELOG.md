@@ -1,5 +1,13 @@
 # acquia-dam-sdk
 
+## 1.0.3
+
+### Patch Changes
+
+- 16af109: Add Natural Language Search parameter
+- 023c2b0: Add ai_tags and tags expands for assets
+- d412cc4: Add support for Update Asset Metadata webhook
+
 ## 1.0.2
 
 ### Patch Changes
