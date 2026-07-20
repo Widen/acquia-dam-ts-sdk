@@ -20,6 +20,20 @@ export interface AssetDeletedEvent extends BaseAssetEvent {
   event_type: 'asset_deleted'
 }
 
+export interface AssetMetadataUpdatedEvent extends BaseAssetEvent {
+  change: {
+    change: {
+      new_value: string[]
+      old_value: string[]
+    }
+    field: {
+      display_key: string
+      value_type: string
+    }
+  }[]
+  event_type: 'asset_metadata_value_updated'
+}
+
 export interface AssetReleaseDateUpdatedEvent extends BaseAssetEvent {
   change: {
     new_value: string

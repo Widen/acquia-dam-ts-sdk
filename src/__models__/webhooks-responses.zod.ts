@@ -24,6 +24,7 @@ export const getAssetsWebhookResultSchema = z.object({
   event_type: z.string(),
   last_delivered_date: z.date().nullable(),
   last_pinged_date: z.date().nullable(),
+  monitored_metadata_fields: z.array(z.string()).nullable(),
   signing_enabled: z.boolean(),
   webhook_configuration_id: z.string(),
 })
